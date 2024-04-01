@@ -1,0 +1,25 @@
+package pe.edu.upc.vitality.serviceimplements;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pe.edu.upc.vitality.entities.Producto;
+import pe.edu.upc.vitality.repositories.IProductoRepository;
+import pe.edu.upc.vitality.servicesinterfaces.IProductoService;
+
+import java.util.List;
+
+@Service
+public class ProductoServiceImplement implements IProductoService {
+    @Autowired
+    private IProductoRepository productoRepository;
+
+    @Override
+    public void insert(Producto producto) {
+        productoRepository.save(producto);
+    }
+
+    @Override
+    public List<Producto> list() {
+        return productoRepository.findAll();
+    }
+}

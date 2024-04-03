@@ -30,4 +30,9 @@ public class ProductoController {
             return modelMapper.map(producto, ProductoDTO.class);
         }).collect(Collectors.toList());
     }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable  Integer id){
+
+        productoService.delete(id);
+    }
 }

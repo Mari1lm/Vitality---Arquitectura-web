@@ -8,10 +8,10 @@ import jakarta.persistence.*;
 public class Recommendation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idRecommendation;
+    private int idRecommendation;
 
     @Column(name = "descriptionRecommendation",nullable = false,length = 200)
-    public String descriptionRecommendation;
+    private String descriptionRecommendation;
 
     public Recommendation() {
     }

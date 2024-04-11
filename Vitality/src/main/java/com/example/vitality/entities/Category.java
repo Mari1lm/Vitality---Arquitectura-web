@@ -9,12 +9,12 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idCategory;
+    private int idCategory;
     @Column(name = "typeCategory", nullable = false, length = 20)
-    public String typeCategory;
+    private String typeCategory;
 
     @Column(name = "descriptionCategory", nullable = false)
-    public String descriptionCategory;
+    private String descriptionCategory;
 
     public Category() {
     }

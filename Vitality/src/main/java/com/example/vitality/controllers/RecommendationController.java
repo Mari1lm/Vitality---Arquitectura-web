@@ -40,7 +40,7 @@ public class RecommendationController {
 
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
-    @GetMapping("/cantidades")
+    /*@GetMapping("/cantidades")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){
         List<String[]> filaLista = rS.quantityRecommendationByMovie();
         List<RecommendationByUserDTO> dtoLista = new ArrayList<>();
@@ -53,5 +53,6 @@ public class RecommendationController {
         return dtoLista;
 
     }
+    */
 
 }

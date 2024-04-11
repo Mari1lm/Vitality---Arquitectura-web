@@ -10,5 +10,5 @@ public interface IRecommendationService {
 
      public void delete(int id);
 
-     public List<String[]> quantityRecommendationByMovie();
+     //public List<String[]> quantityRecommendationByMovie();
 }

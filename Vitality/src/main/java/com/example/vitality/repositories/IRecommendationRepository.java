@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface IRecommendationRepository extends JpaRepository<Recommendation,Integer> {
 
-    List<String[]> quantityRecommendationByMovie();
 }

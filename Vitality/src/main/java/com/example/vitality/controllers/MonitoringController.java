@@ -20,14 +20,9 @@ public class MonitoringController {
     public void insertar(@RequestBody MonitoringDTO monitoringDTO) {
         ModelMapper d = new ModelMapper();
         Monitoring monitoring = d.map(monitoringDTO, Monitoring.class);
-        mS.insert(monitoring);
+        mR.insert(monitoring);
     }
 
-    @GetMapping
-    public List<MonitoringDTO> listar() {
-        return mR.list().stream().map(y-> {
-            ModelMapper m=new ModelMapper();
-            return  m.map(y,MonitoringDTO.class);
-        }).collect(Collectors.toList());
-    }
+
+
 }

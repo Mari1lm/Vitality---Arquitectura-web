@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.stream.Collectors;
 
 public class ShoppingController {
-    @Autowired
+    /*@Autowired
     private IShoppingService sS;
 
     @PostMapping
     public void insertar(@RequestBody ShoppingDTO shoppingDTO) {
         ModelMapper d = new ModelMapper();
         Shopping shopping = d.map(shoppingDTO, Shopping.class);
-        mS.insert(movie);
+        sS.insert(movie);
     }
 
     @GetMapping
@@ -28,5 +28,5 @@ public class ShoppingController {
             ModelMapper m=new ModelMapper();
             return  m.map(y,ShoppingDTO.class);
         }).collect(Collectors.toList());
-    }
+    }*/
 }

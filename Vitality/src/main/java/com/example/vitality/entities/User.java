@@ -27,12 +27,12 @@ import jakarta.persistence.*;
         private String healthProfessional;
         @ManyToOne
         @JoinColumn(name = "rolId")
-        private Rol rol;
+        private Role rol;
 
         public User() {
         }
 
-        public User(int idUser, String nameUser, String email, String password, String address, Float weight, int height, String subscription, String healthProfessional, Rol rol) {
+        public User(int idUser, String nameUser, String email, String password, String address, Float weight, int height, String subscription, String healthProfessional, Role role) {
             this.idUser = idUser;
             this.nameUser = nameUser;
             this.email = email;
@@ -42,7 +42,7 @@ import jakarta.persistence.*;
             this.height = height;
             this.subscription = subscription;
             this.healthProfessional = healthProfessional;
-            this.rol = rol;
+            this.role = role;
         }
 
         public int getIdUser() {
@@ -117,11 +117,11 @@ import jakarta.persistence.*;
             this.healthProfessional = healthProfessional;
         }
 
-        public Rol getRol() {
+        public Role getRol() {
             return rol;
         }
 
-        public void setRol(Rol rol) {
+        public void setRol(Role rol) {
             this.rol = rol;
         }
     }

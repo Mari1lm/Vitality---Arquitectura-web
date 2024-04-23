@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Shopping")
 public class Shopping {
+    //fdsfd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numOrderShopping;

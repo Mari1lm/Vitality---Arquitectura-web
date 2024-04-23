@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IMonitoringRepository extends JpaRepository <Monitoring,Integer> {
+    //assa
 }

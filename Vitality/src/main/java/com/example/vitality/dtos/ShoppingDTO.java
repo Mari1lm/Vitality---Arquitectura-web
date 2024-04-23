@@ -1,6 +1,7 @@
 package com.example.vitality.dtos;
 
 public class ShoppingDTO {
+    //ddd
     private int numOrderShopping;
     private int dateShopping;
     private int totalShopping;

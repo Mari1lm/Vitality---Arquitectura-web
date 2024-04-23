@@ -1,6 +1,8 @@
 package com.example.vitality.dtos;
 
 
+import com.example.vitality.entities.User;
+
 public class SpecialtyDTO {
     private int idspecialty;
     private String specialization;

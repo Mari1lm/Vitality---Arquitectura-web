@@ -1,5 +1,6 @@
 package com.example.vitality.dtos;
 
+import com.example.vitality.entities.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

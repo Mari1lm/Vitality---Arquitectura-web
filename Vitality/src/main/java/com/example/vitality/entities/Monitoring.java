@@ -1,7 +1,7 @@
 package com.example.vitality.entities;
 
 import jakarta.persistence.*;
-
+//d<<<<
 @Entity
 @Table(name = "Monitoring")
 public class Monitoring {

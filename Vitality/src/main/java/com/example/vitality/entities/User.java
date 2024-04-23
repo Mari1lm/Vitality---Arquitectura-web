@@ -27,7 +27,7 @@ import jakarta.persistence.*;
         private String healthProfessional;
         @ManyToOne
         @JoinColumn(name = "rolId")
-        private Role rol;
+        private Role role;
 
         public User() {
         }
@@ -118,10 +118,10 @@ import jakarta.persistence.*;
         }
 
         public Role getRol() {
-            return rol;
+            return role;
         }
 
         public void setRol(Role rol) {
-            this.rol = rol;
+            this.role = rol;
         }
     }

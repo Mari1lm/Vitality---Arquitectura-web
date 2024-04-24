@@ -8,24 +8,15 @@ import jakarta.persistence.ManyToOne;
 public class UserDTO {
 
     private int idUser;
-
     private String nameUser;
-
     private String email;
-
     private String password;
 
-
     private String address;
-
     private Float weight;
-
     private int height;
-
     private String subscription;
-
     private String healthProfessional;
-
     private Role role;
 
     public int getIdUser() {
@@ -100,11 +91,11 @@ public class UserDTO {
         this.healthProfessional = healthProfessional;
     }
 
-    public Role getRol() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRol(Role rol) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

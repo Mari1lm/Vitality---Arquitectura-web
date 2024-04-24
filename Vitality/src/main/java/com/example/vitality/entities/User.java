@@ -1,9 +1,8 @@
 package com.example.vitality.entities;
-
 import jakarta.persistence.*;
 
     @Entity
-    @Table(name="User")
+    @Table(name="Users")
     public class User {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,7 @@ import jakarta.persistence.*;
         @Column(name = "healthProfessional",nullable = false,length = 10)
         private String healthProfessional;
         @ManyToOne
-        @JoinColumn(name = "rolId")
+        @JoinColumn(name = "idRole")
         private Role role;
 
         public User() {
@@ -121,7 +120,7 @@ import jakarta.persistence.*;
             return role;
         }
 
-        public void setRol(Role rol) {
-            this.role = rol;
+        public void setRol(Role role) {
+            this.role = role;
         }
     }

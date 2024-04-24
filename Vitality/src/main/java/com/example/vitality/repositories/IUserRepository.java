@@ -21,7 +21,7 @@ public interface IUserRepository extends JpaRepository<User,Integer> {
             "ON PR.id_product = S.producto_id\n " +
             "INNER JOIN CATEGORY CA\n " +
             "ON CA.id_category = PR.category_id\n " +
-            "WHERE CA.type_category = %:Tipo%\n " +
+            "WHERE CA.type_category = :Tipo\n " +
             "GROUP BY U.name_user ",nativeQuery = true)
     public List<String[]> finUserSumProductsByType(@Param("Tipo") String Type);
 

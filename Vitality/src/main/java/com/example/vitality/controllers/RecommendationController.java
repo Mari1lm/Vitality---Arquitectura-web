@@ -1,17 +1,12 @@
 package com.example.vitality.controllers;
 
-
-
 import com.example.vitality.dtos.RecommendationByUserDTO;
 import com.example.vitality.dtos.RecommendationDTO;
 import com.example.vitality.entities.Recommendation;
 import com.example.vitality.servicesinterfaces.IRecommendationService;
-import jakarta.persistence.GeneratedValue;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +32,6 @@ public class RecommendationController {
         }).collect(Collectors.toList());
     }
 
-
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
     @GetMapping("/cantidades por Usuario")
@@ -53,7 +47,7 @@ public class RecommendationController {
         }
         return dtoLista;
 
-    }
 
+    }
 
 }

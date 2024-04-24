@@ -17,7 +17,11 @@ public class UserDTO {
     private int height;
     private String subscription;
     private String healthProfessional;
+
+    //private Rol rol;
+
     private Role role;
+
 
     public int getIdUser() {
         return idUser;
@@ -89,6 +93,14 @@ public class UserDTO {
 
     public void setHealthProfessional(String healthProfessional) {
         this.healthProfessional = healthProfessional;
+    }
+
+    public Role getRol() {
+        return role;
+    }
+
+    public void setRol(Role rol) {
+        this.role = rol;
     }
 
     public Role getRole() {

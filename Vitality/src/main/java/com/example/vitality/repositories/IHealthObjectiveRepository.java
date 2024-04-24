@@ -1,9 +1,10 @@
 package com.example.vitality.repositories;
 
-import com.example.vitality.entities.Product;
+import com.example.vitality.entities.HealthObjective;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 @Repository
-public interface IProductRepository extends JpaRepository<Product,Integer> {
+public interface IHealthObjectiveRepository extends JpaRepository<HealthObjective, Integer> {
 
 }

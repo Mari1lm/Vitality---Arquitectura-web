@@ -15,7 +15,7 @@ public class Product {
     @Column(name = "stock",nullable = false)
     private int stock;
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
 
@@ -70,3 +70,5 @@ public class Product {
         this.category = category;
     }
 }
+
+

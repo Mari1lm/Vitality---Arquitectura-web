@@ -1,8 +1,8 @@
 package com.example.vitality.controllers;
 
-//import com.example.vitality.dtos.MonitoringDTO;
-//import com.example.vitality.entities.Monitoring;
-//import com.example.vitality.servicesinterfaces.IMonitoringService;
+import com.example.vitality.dtos.MonitoringDTO;
+import com.example.vitality.entities.Monitoring;
+import com.example.vitality.servicesinterfaces.IMonitoringService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/seguimiento")
 public class MonitoringController {
-    /*@Autowired
+    @Autowired
     private IMonitoringService mR;
 
     @PostMapping
@@ -23,6 +23,5 @@ public class MonitoringController {
         mR.insert(monitoring);
     }
 
-*/
 
 }

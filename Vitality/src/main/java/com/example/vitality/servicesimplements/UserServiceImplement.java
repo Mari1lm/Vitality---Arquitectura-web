@@ -49,5 +49,10 @@ private IUserRepository uR;
         return uR.findByHealthProfessional(profesional);
     }
 
+    @Override
+    public List<String[]> finUserSumProductsByType(String Type) {
+        return uR.finUserSumProductsByType(Type);
+    }
+
 
 }

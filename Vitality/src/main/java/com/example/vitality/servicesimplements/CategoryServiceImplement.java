@@ -1,6 +1,7 @@
 package com.example.vitality.servicesimplements;
 
 import com.example.vitality.entities.Category;
+import com.example.vitality.entities.Product;
 import com.example.vitality.repositories.ICategoryRepository;
 import com.example.vitality.servicesinterfaces.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class CategoryServiceImplement implements ICategoryService {
     @Override
     public List<Category> list() {
         return cR.findAll();
+    }
+
+    @Override
+    public Category listId(int id) {
+        return cR.findById(id).orElse(new Category());
     }
 }

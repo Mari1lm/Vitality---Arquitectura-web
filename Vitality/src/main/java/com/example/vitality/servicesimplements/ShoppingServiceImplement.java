@@ -1,4 +1,5 @@
 package com.example.vitality.servicesimplements;
+import com.example.vitality.entities.Product;
 import com.example.vitality.entities.Shopping;
 import com.example.vitality.repositories.IShoppingRepository;
 import com.example.vitality.servicesinterfaces.IShoppingService;
@@ -20,6 +21,16 @@ public class ShoppingServiceImplement implements IShoppingService {
     @Override
     public List<Shopping> list() {
         return sR.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        sR.deleteById(id);
+    }
+
+    @Override
+    public Shopping listId(int id) {
+        return sR.findById(id).orElse(new Shopping());
     }
 
 }

@@ -1,5 +1,7 @@
 package com.example.vitality.dtos;
 
+import com.example.vitality.entities.HealthObjective;
+
 public class MonitoringDTO {
     private int idMonitoring;
     private int starDateMonitoring;
@@ -7,6 +9,15 @@ public class MonitoringDTO {
     private String statusMonitoring;
     private String historyMonitoring;
     private String nutritionalPlanMonitoring;
+
+    private HealthObjective healthObjective;
+    public HealthObjective getHealthObjective() {
+        return healthObjective;
+    }
+
+    public void setHealthObjective(HealthObjective healthObjective) {
+        this.healthObjective = healthObjective;
+    }
 
     public int getIdMonitoring() {
         return idMonitoring;

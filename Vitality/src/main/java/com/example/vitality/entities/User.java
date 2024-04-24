@@ -24,14 +24,20 @@ import jakarta.persistence.*;
         private String subscription;
         @Column(name = "healthProfessional",nullable = false,length = 10)
         private String healthProfessional;
+
         @ManyToOne
         @JoinColumn(name = "idRole")
         private Role role;
 
+        @ManyToOne
+        @JoinColumn(name = "idSpeciality")
+        private Specialty specialty;
+
+
         public User() {
         }
+        public User(int idUser, String nameUser, String email, String password, String address, Float weight, int height, String subscription, String healthProfessional, Role role, Specialty specialty) {
 
-        public User(int idUser, String nameUser, String email, String password, String address, Float weight, int height, String subscription, String healthProfessional, Role role) {
             this.idUser = idUser;
             this.nameUser = nameUser;
             this.email = email;
@@ -42,6 +48,8 @@ import jakarta.persistence.*;
             this.subscription = subscription;
             this.healthProfessional = healthProfessional;
             this.role = role;
+            this.specialty = specialty;
+
         }
 
         public int getIdUser() {
@@ -116,11 +124,19 @@ import jakarta.persistence.*;
             this.healthProfessional = healthProfessional;
         }
 
-        public Role getRol() {
+        public Role getRole() {
             return role;
         }
 
-        public void setRol(Role role) {
+        public void setRole(Role role) {
             this.role = role;
+        }
+
+        public Specialty getSpecialty() {
+            return specialty;
+        }
+
+        public void setSpecialty(Specialty specialty) {
+            this.specialty = specialty;
         }
     }

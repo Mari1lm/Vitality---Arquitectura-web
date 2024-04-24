@@ -1,17 +1,14 @@
 package com.example.vitality.controllers;
 
-
-
+import com.example.vitality.dtos.RecommendationDTO;
 import com.example.vitality.dtos.RecommendationByUserDTO;
 import com.example.vitality.dtos.RecommendationDTO;
 import com.example.vitality.entities.Recommendation;
+import com.example.vitality.entities.Recommendation;
 import com.example.vitality.servicesinterfaces.IRecommendationService;
-import jakarta.persistence.GeneratedValue;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,22 +34,37 @@ public class RecommendationController {
         }).collect(Collectors.toList());
     }
 
-
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
-    /*@GetMapping("/cantidades")
+    @GetMapping("/{id}")
+    public RecommendationDTO listarId(@PathVariable("id") Integer id){
+
+        ModelMapper m= new ModelMapper();
+        RecommendationDTO dto=m.map(rS.listId(id),RecommendationDTO.class);
+        return dto;
+
+    }
+    @PutMapping
+    public void modificar(@RequestBody RecommendationDTO recommendationDTO){
+        ModelMapper d= new ModelMapper();
+        Recommendation recommendation=d.map(recommendationDTO,Recommendation.class);
+        rS.insert(recommendation);
+    }
+
+    @GetMapping("/cantidades por Usuario")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){
         List<String[]> filaLista = rS.quantityRecommendationByMovie();
         List<RecommendationByUserDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filaLista){
             RecommendationByUserDTO dto = new RecommendationByUserDTO();
-            dto.setNameUser(columna[0]);
-            dto.setQuantityRecommendation(Integer.parseInt(columna[1]));
+            dto.setIdUser(Integer.parseInt(columna[0]));
+            dto.setNameUser(columna[1]);
+            dto.setQuantityRecommendation(Integer.parseInt(columna[2]));
             dtoLista.add(dto);
         }
         return dtoLista;
 
+
     }
-    */
 
 }

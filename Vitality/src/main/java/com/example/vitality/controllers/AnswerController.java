@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@RestController
+@RequestMapping("/Respuesta")
 public class AnswerController {
     private IAnswerService aS;
     @PostMapping
@@ -40,7 +41,6 @@ public class AnswerController {
         return dto;
 
     }
-    //saasdas
     @PutMapping
     public void modificar(@RequestBody AnswerDTO answerDTO){
         ModelMapper d= new ModelMapper();

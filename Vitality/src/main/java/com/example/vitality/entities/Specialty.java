@@ -15,18 +15,14 @@ public class Specialty {
     @Column( name = "profileDescription", nullable = false, length = 100)
     private String profileDescription;
 
-    @OneToOne
-    @JoinColumn(name="userId")
-    private User user;
 
     public Specialty() {
     }
 
-    public Specialty(int idspecialty, String specialization, String profileDescription, User user) {
+    public Specialty(int idspecialty, String specialization, String profileDescription) {
         this.idspecialty = idspecialty;
         this.specialization = specialization;
         this.profileDescription = profileDescription;
-        this.user = user;
     }
 
     public int getIdspecialty() {
@@ -53,11 +49,4 @@ public class Specialty {
         this.profileDescription = profileDescription;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

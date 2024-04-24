@@ -1,5 +1,6 @@
 package com.example.vitality.controllers;
 
+import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.CategoryDTO;
 import com.example.vitality.dtos.UserDTO;
 import com.example.vitality.entities.Category;
@@ -44,5 +45,15 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         cS.delete(id);
+    }
+
+
+    @GetMapping("/{id}")
+    public CategoryDTO listarId(@PathVariable("id") Integer id){
+
+        ModelMapper m= new ModelMapper();
+        CategoryDTO dto=m.map(cS.listId(id),CategoryDTO.class);
+        return dto;
+
     }
 }

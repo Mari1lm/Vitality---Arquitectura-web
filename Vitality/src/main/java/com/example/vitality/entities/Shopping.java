@@ -15,20 +15,16 @@ public class Shopping {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-    @ManyToOne
-    @JoinColumn(name = "productoId")
-    private Product product;
 
     public Shopping() {
 
     }
 
-    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, User user, Product product) {
+    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, User user) {
         this.numOrderShopping = numOrderShopping;
         this.dateShopping = dateShopping;
         this.totalShopping = totalShopping;
         this.user = user;
-        this.product = product;
     }
 
     public int getNumOrderShopping() {
@@ -63,11 +59,5 @@ public class Shopping {
         this.user = user;
     }
 
-    public Product getProduct() {
-        return product;
-    }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

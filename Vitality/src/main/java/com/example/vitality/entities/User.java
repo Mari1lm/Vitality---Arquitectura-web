@@ -25,7 +25,6 @@ import jakarta.persistence.*;
         @Column(name = "healthProfessional",nullable = false,length = 10)
         private String healthProfessional;
 
-
         @ManyToOne
         @JoinColumn(name = "idRole")
         private Role role;

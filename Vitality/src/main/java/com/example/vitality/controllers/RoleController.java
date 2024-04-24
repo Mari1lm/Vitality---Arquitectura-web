@@ -27,7 +27,7 @@ public class RoleController {
     public void modificar(@RequestBody RoleDTO roleDTO){
         ModelMapper d= new ModelMapper();
         Role role=d.map(roleDTO, Role.class);
-        cS.insert(Role);
+        cS.insert(role);
     }
 
 

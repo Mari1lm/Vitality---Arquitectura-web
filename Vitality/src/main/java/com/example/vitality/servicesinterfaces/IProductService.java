@@ -1,6 +1,4 @@
 package com.example.vitality.servicesinterfaces;
-
-
 import com.example.vitality.entities.Product;
 
 import java.util.List;
@@ -13,5 +11,4 @@ public interface IProductService {
     public void delete(int id);
 
     public Product listId(int id);
-
 }

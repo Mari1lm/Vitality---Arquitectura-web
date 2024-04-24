@@ -1,9 +1,8 @@
 package com.example.vitality.entities;
-
 import jakarta.persistence.*;
 
     @Entity
-    @Table(name="User")
+    @Table(name="Users")
     public class User {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +24,20 @@ import jakarta.persistence.*;
         private String subscription;
         @Column(name = "healthProfessional",nullable = false,length = 10)
         private String healthProfessional;
-        /*@ManyToOne
+
+        @ManyToOne
         @JoinColumn(name = "rolId")
-        private Rol rol;*/
+        private Role rol;
+
+        @ManyToOne
+        @JoinColumn(name = "idRole")
+        private Role role;
+
 
         public User() {
         }
+        public User(int idUser, String nameUser, String email, String password, String address, Float weight, int height, String subscription, String healthProfessional, Role role) {
 
-        public User(int idUser, String nameUser, String email, String password, String address, Float weight, int height, String subscription, String healthProfessional) {
             this.idUser = idUser;
             this.nameUser = nameUser;
             this.email = email;
@@ -42,7 +47,11 @@ import jakarta.persistence.*;
             this.height = height;
             this.subscription = subscription;
             this.healthProfessional = healthProfessional;
-            //this.rol = rol;
+
+            this.role = role;
+
+            this.role = role;
+
         }
 
         public int getIdUser() {
@@ -117,11 +126,19 @@ import jakarta.persistence.*;
             this.healthProfessional = healthProfessional;
         }
 
-       /* public Rol getRol() {
+        public Role getRol() {
             return rol;
         }
 
-        public void setRol(Rol rol) {
+        public void setRol(Role rol) {
             this.rol = rol;
-        }*/
+        }
+
+        public Role getRole() {
+            return role;
+        }
+
+        public void setRole(Role role) {
+            this.role = role;
+        }
     }

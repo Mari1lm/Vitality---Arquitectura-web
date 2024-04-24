@@ -1,5 +1,6 @@
 package com.example.vitality.dtos;
 
+import com.example.vitality.entities.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -7,25 +8,20 @@ import jakarta.persistence.ManyToOne;
 public class UserDTO {
 
     private int idUser;
-
     private String nameUser;
-
     private String email;
-
     private String password;
 
-
     private String address;
-
     private Float weight;
-
     private int height;
-
     private String subscription;
-
     private String healthProfessional;
 
     //private Rol rol;
+
+    private Role role;
+
 
     public int getIdUser() {
         return idUser;
@@ -99,11 +95,19 @@ public class UserDTO {
         this.healthProfessional = healthProfessional;
     }
 
-    /*public Rol getRol() {
-        return rol;
+    public Role getRol() {
+        return role;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }*/
+    public void setRol(Role rol) {
+        this.role = rol;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

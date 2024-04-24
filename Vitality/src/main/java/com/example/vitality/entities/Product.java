@@ -1,7 +1,6 @@
 package com.example.vitality.entities;
 
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 
 @Entity
 @Table(name="Product")
@@ -15,9 +14,10 @@ public class Product{
     private int price;
     @Column(name = "stock",nullable = false)
     private int stock;
-   // @ManytoOne
-    //@JoinColumn(name = "categoryId")
-  //  private Category category;
+
+   @ManyToOne
+    @JoinColumn(name = "categoryId")
+    private Category category;
 
     public Product() {
     }
@@ -27,7 +27,7 @@ public class Product{
         this.name = name;
         this.price = price;
         this.stock = stock;
-        //this.category = category;
+        this.category = category;
     }
 
     public int getIdProduct() {
@@ -62,10 +62,13 @@ public class Product{
         this.stock = stock;
     }
 
-   // public Category getCategory() {
-        //return category;
-   // }
-
-    //public void setCategory(Category category) {
-       // this.category = category;
+    public Category getCategory() {
+        return category;
     }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+}
+
+

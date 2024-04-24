@@ -1,0 +1,31 @@
+package com.example.vitality.servicesimplements;
+
+import com.example.vitality.entities.Category;
+import com.example.vitality.repositories.ICategoryRepository;
+import com.example.vitality.servicesinterfaces.ICategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.AccessType;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CategoryServiceImplement implements ICategoryService {
+    @Autowired
+    private ICategoryRepository cR;
+
+    @Override
+    public void insert(Category category) {
+        cR.save(category);
+    }
+
+    @Override
+    public void delete(int id) {
+        cR.deleteById(id);
+    }
+
+    @Override
+    public List<Category> list() {
+        return cR.findAll();
+    }
+}

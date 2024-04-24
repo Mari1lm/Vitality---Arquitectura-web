@@ -18,6 +18,6 @@ public class RecommendationServiceImplement implements IRecommendationService {
     @Override
     public void delete(int id){rR.deleteById(id);}
 
-    //@Override
-    //public List<String[]> quantityRecommendationByMovie(){return rR.quantityRecommendationByMovie();}
+    @Override
+    public List<String[]> quantityRecommendationByMovie(){return rR.quantityRecommendationByMovie();}
 }

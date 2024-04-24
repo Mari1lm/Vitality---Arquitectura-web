@@ -1,5 +1,6 @@
 package com.example.vitality.servicesimplements;
 
+import com.example.vitality.entities.Product;
 import com.example.vitality.entities.ShoppingDetail;
 import com.example.vitality.repositories.IShoppingDetailRepository;
 import com.example.vitality.repositories.IShoppingRepository;
@@ -20,6 +21,11 @@ public class ShoppingDetailServiceImplement implements IShoppingDetailService {
     @Override
     public void delete(int id) {
         sR.deleteById(id);
+    }
+
+    @Override
+    public ShoppingDetail listId(int id) {
+        return sR.findById(id).orElse(new ShoppingDetail());
     }
 
     @Override

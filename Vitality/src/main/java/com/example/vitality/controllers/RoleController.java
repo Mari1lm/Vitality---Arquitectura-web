@@ -1,5 +1,6 @@
 package com.example.vitality.controllers;
 
+import com.example.vitality.dtos.ReviewDTO;
 import com.example.vitality.dtos.RoleDTO;
 import com.example.vitality.entities.Role;
 import com.example.vitality.servicesinterfaces.IRoleService;
@@ -42,6 +43,15 @@ public class RoleController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         cS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public RoleDTO listarId(@PathVariable("id") Integer id){
+
+        ModelMapper m= new ModelMapper();
+        RoleDTO dto=m.map(cS.listId(id),RoleDTO.class);
+        return dto;
+
     }
     
 }

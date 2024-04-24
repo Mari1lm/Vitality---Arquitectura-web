@@ -1,6 +1,8 @@
 package com.example.vitality.controllers;
 
+import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.HealthObjectiveDTO;
+import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.HealthObjective;
 import com.example.vitality.servicesinterfaces.IHealthObjectiveService;
 import org.modelmapper.ModelMapper;
@@ -37,5 +39,12 @@ public class HealthObjectiveController {
         HealthObjectiveDTO dto=m.map(hS.listId(id),HealthObjectiveDTO.class);
         return dto;
 
+    }
+
+    @PutMapping
+    public void modificar(@RequestBody HealthObjectiveDTO healthObjectiveDTO){
+        ModelMapper d= new ModelMapper();
+        HealthObjective healthObjective=d.map(healthObjectiveDTO,HealthObjective.class);
+        hS.insert(healthObjective);
     }
 }

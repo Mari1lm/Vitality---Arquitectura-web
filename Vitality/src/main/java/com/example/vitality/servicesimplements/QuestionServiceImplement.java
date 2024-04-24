@@ -1,5 +1,6 @@
 package com.example.vitality.servicesimplements;
 
+import com.example.vitality.entities.Product;
 import com.example.vitality.entities.Question;
 import com.example.vitality.repositories.IQuestionRepository;
 import com.example.vitality.servicesinterfaces.IQuestionService;
@@ -25,5 +26,10 @@ public class QuestionServiceImplement implements IQuestionService{
     @Override
     public void delete(int id) {
         qR.deleteById(id);
+    }
+
+    @Override
+    public Question listId(int id) {
+        return qR.findById(id).orElse(new Question());
     }
 }

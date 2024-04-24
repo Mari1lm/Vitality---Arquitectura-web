@@ -1,6 +1,8 @@
 package com.example.vitality.controllers;
 
 import com.example.vitality.dtos.QuestionDTO;
+import com.example.vitality.dtos.QuestionDTO;
+import com.example.vitality.entities.Question;
 import com.example.vitality.entities.Question;
 import com.example.vitality.servicesinterfaces.IQuestionService;
 import org.modelmapper.ModelMapper;
@@ -32,4 +34,19 @@ public class QuestionController {
     public void eliminar(@PathVariable Integer id){
         qS.delete(id);
     }
+    @GetMapping("/{id}")
+    public QuestionDTO listarId(@PathVariable("id") Integer id){
+
+        ModelMapper m= new ModelMapper();
+        QuestionDTO dto=m.map(qS.listId(id),QuestionDTO.class);
+        return dto;
+
+    }
+    @PutMapping
+    public void modificar(@RequestBody QuestionDTO questionDTO){
+        ModelMapper d= new ModelMapper();
+        Question question=d.map(questionDTO,Question.class);
+        qS.insert(question);
+    }
+
 }

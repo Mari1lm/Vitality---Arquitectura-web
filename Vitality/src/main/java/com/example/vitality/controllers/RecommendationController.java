@@ -1,7 +1,9 @@
 package com.example.vitality.controllers;
 
+import com.example.vitality.dtos.RecommendationDTO;
 import com.example.vitality.dtos.RecommendationByUserDTO;
 import com.example.vitality.dtos.RecommendationDTO;
+import com.example.vitality.entities.Recommendation;
 import com.example.vitality.entities.Recommendation;
 import com.example.vitality.servicesinterfaces.IRecommendationService;
 import org.modelmapper.ModelMapper;
@@ -33,6 +35,21 @@ public class RecommendationController {
     }
 
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
+
+    @GetMapping("/{id}")
+    public RecommendationDTO listarId(@PathVariable("id") Integer id){
+
+        ModelMapper m= new ModelMapper();
+        RecommendationDTO dto=m.map(rS.listId(id),RecommendationDTO.class);
+        return dto;
+
+    }
+    @PutMapping
+    public void modificar(@RequestBody RecommendationDTO recommendationDTO){
+        ModelMapper d= new ModelMapper();
+        Recommendation recommendation=d.map(recommendationDTO,Recommendation.class);
+        rS.insert(recommendation);
+    }
 
     @GetMapping("/cantidades por Usuario")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){

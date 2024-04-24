@@ -1,7 +1,6 @@
 package com.example.vitality.entities;
 
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 
 @Entity
 @Table(name="Product")

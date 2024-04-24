@@ -1,6 +1,6 @@
 package com.example.vitality.dtos;
 
-import jakarta.persistence.Column;
+import com.example.vitality.entities.User;
 
 public class CategoryDTO {
     public int idCategory;

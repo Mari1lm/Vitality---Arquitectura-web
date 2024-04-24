@@ -1,11 +1,21 @@
 package com.example.vitality.dtos;
 
-import jakarta.persistence.Column;
+import com.example.vitality.entities.User;
 
 public class RecommendationDTO {
     private int idRecommendation;
 
     private String descriptionRecommendation;
+
+    public User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getIdRecommendation() {
         return idRecommendation;

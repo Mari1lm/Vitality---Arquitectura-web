@@ -12,20 +12,23 @@ public class Shopping {
     private int dateShopping;
     @Column(name = "totalShopping",nullable = false)
     private int totalShopping;
-    @Column(name = "idUserShopping",nullable = false)
-    private int idUserShopping;
-    @Column(name = "IdProductShopping",nullable = false)
-    private int IdProductShopping;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "productoId")
+    private Product product;
 
     public Shopping() {
+
     }
 
-    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, int idUserShopping, int idProductShopping) {
+    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, User user, Product product) {
         this.numOrderShopping = numOrderShopping;
         this.dateShopping = dateShopping;
         this.totalShopping = totalShopping;
-        this.idUserShopping = idUserShopping;
-        IdProductShopping = idProductShopping;
+        this.user = user;
+        this.product = product;
     }
 
     public int getNumOrderShopping() {
@@ -52,19 +55,19 @@ public class Shopping {
         this.totalShopping = totalShopping;
     }
 
-    public int getIdUserShopping() {
-        return idUserShopping;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUserShopping(int idUserShopping) {
-        this.idUserShopping = idUserShopping;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getIdProductShopping() {
-        return IdProductShopping;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setIdProductShopping(int idProductShopping) {
-        IdProductShopping = idProductShopping;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

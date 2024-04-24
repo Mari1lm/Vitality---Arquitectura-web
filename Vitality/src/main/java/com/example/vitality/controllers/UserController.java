@@ -65,7 +65,7 @@ private IUserService uS;
     }
 
     @GetMapping("/find")
-    public List<UserDTO> buscar(@RequestParam String suscripcion){
+    public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion){
         return uS.findBySubscription(suscripcion).stream().map(y->{
             ModelMapper m=new ModelMapper();
             return m.map(y,UserDTO.class);
@@ -74,7 +74,7 @@ private IUserService uS;
     }
 
     @GetMapping("/find")
-    public List<UserDTO> buscar(@RequestParam String profesional){
+    public List<UserDTO> buscarporprofesional(@RequestParam String profesional){
         return uS.findByHealthProfessional(profesional).stream().map(y->{
             ModelMapper m=new ModelMapper();
             return m.map(y,UserDTO.class);

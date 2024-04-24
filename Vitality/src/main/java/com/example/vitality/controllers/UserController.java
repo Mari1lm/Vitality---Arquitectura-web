@@ -37,7 +37,6 @@ private IUserService uS;
             ModelMapper m=new ModelMapper();
             return m.map(y,UserDTO.class);
         }).collect(Collectors.toList());
-
     }
 
     @DeleteMapping("/{id}")
@@ -64,7 +63,8 @@ private IUserService uS;
 
     }
 
-    @GetMapping("/find")
+
+    @GetMapping("/findbysuscription")
     public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion){
         return uS.findBySubscription(suscripcion).stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -73,7 +73,7 @@ private IUserService uS;
 
     }
 
-    @GetMapping("/find")
+    @GetMapping("/findbyprofessional")
     public List<UserDTO> buscarporprofesional(@RequestParam String profesional){
         return uS.findByHealthProfessional(profesional).stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -81,5 +81,6 @@ private IUserService uS;
         }).collect(Collectors.toList());
 
     }
+
 
 }

@@ -10,7 +10,6 @@ public class HealthObjectiveDTO {
     private int idHealthObjective;
     private String tipoObjetivo;
     private User user;
-    private Monitoring monitoring;
 
     public int getIdHealthObjective() {
         return idHealthObjective;
@@ -36,11 +35,4 @@ public class HealthObjectiveDTO {
         this.user = user;
     }
 
-    public Monitoring getMonitoring() {
-        return monitoring;
-    }
-
-    public void setMonitoring(Monitoring monitoring) {
-        this.monitoring = monitoring;
-    }
 }

@@ -7,25 +7,21 @@ public class HealthObjective {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHealthObjective;
-    @Column(name = "tipoObjetivo",nullable = false,length =20)
-    private String tipoObjetivo;
+    @Column(name = "typeObjective",nullable = false,length =20)
+    private String typeObjective;
 
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "monitoringId")
-    private Monitoring monitoring;
 
     public HealthObjective() {
     }
 
-    public HealthObjective(int idHealthObjective, String tipoObjetivo, User user, Monitoring monitoring) {
+    public HealthObjective(int idHealthObjective, String typeObjective, User user) {
         this.idHealthObjective = idHealthObjective;
-        this.tipoObjetivo = tipoObjetivo;
+        this.typeObjective = typeObjective;
         this.user = user;
-        this.monitoring = monitoring;
     }
 
     public int getIdHealthObjective() {
@@ -36,12 +32,12 @@ public class HealthObjective {
         this.idHealthObjective = idHealthObjective;
     }
 
-    public String getTipoObjetivo() {
-        return tipoObjetivo;
+    public String getTypeObjective() {
+        return typeObjective;
     }
 
-    public void setTipoObjetivo(String tipoObjetivo) {
-        this.tipoObjetivo = tipoObjetivo;
+    public void setTypeObjective(String typeObjective) {
+        this.typeObjective = typeObjective;
     }
 
     public User getUser() {
@@ -52,11 +48,4 @@ public class HealthObjective {
         this.user = user;
     }
 
-    public Monitoring getMonitoring() {
-        return monitoring;
-    }
-
-    public void setMonitoring(Monitoring monitoring) {
-        this.monitoring = monitoring;
-    }
 }

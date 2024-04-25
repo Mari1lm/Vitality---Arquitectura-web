@@ -1,5 +1,6 @@
 package com.example.vitality.dtos;
 
+//DIEGO
 public class RecommendationByUserDTO {
     private int idUser;
     private String nameUser;

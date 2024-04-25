@@ -1,5 +1,6 @@
 package com.example.vitality.dtos;
 
+//DIEGO
 public class UserBySumProductsByTypeDTO {
     private String nameUser;
 

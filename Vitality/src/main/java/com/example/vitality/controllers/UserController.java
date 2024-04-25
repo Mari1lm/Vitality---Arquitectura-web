@@ -95,6 +95,7 @@ public class UserController {
 
     @GetMapping("/Totalproductoscompradosportipo")
     public List<UserBySumProductsByTypeDTO> sumaproductosportipo(@RequestParam String Type) {
+
         List<String[]> filaLista = uS.finUserSumProductsByType(Type);
         List<UserBySumProductsByTypeDTO> dtoLista=new ArrayList<>();
         for(String[] columna:filaLista){

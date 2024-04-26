@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="Product")
-public class Product {
+public class Product{
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduct;
@@ -15,7 +15,7 @@ public class Product {
     @Column(name = "stock",nullable = false)
     private int stock;
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
 
@@ -70,3 +70,5 @@ public class Product {
         this.category = category;
     }
 }
+
+

@@ -30,7 +30,7 @@ public class UserController {
         }
 
 
-        @GetMapping("/listar usuarios")
+        @GetMapping("/listar-usuarios")
         public List<UserDTO> listar(){
             return uS.list().stream().map(y->{
                 ModelMapper m=new ModelMapper();
@@ -41,7 +41,6 @@ public class UserController {
 
         @DeleteMapping("/{id}")
         public void eliminar(@PathVariable("id") Integer id){
-
             uS.delete(id);
         }
 
@@ -54,7 +53,7 @@ public class UserController {
 
         }
 
-        @GetMapping("/find")
+        @GetMapping("/finda")
         public List<UserDTO> buscar(@RequestParam Float peso){
             return uS.findByWeight(peso).stream().map(y->{
                 ModelMapper m=new ModelMapper();
@@ -64,23 +63,31 @@ public class UserController {
         }
 
 
-        @GetMapping("/findbysuscription")
-        public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion){
-            return uS.findBySubscription(suscripcion).stream().map(y->{
-                ModelMapper m=new ModelMapper();
-                return m.map(y,UserDTO.class);
+        @GetMapping("/findb")
+        public List<UserDTO> buscar(@RequestParam String suscripcion) {
+            return uS.findBySubscription(suscripcion).stream().map(y -> {
+                ModelMapper m = new ModelMapper();
+                return m.map(y, UserDTO.class);
             }).collect(Collectors.toList());
-
         }
 
-        @GetMapping("/findbyprofessional")
-        public List<UserDTO> buscarporprofesional(@RequestParam String profesional){
-            return uS.findByHealthProfessional(profesional).stream().map(y->{
-                ModelMapper m=new ModelMapper();
-                return m.map(y,UserDTO.class);
-            }).collect(Collectors.toList());
+            @GetMapping("/findbysuscription")
+            public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion){
+                return uS.findBySubscription(suscripcion).stream().map(y->{
+                    ModelMapper m=new ModelMapper();
+                    return m.map(y,UserDTO.class);
+                }).collect(Collectors.toList());
+
+            }
+
+            @GetMapping("/findbyprofessional")
+            public List<UserDTO> buscarporprofesional(@RequestParam String profesional){
+                return uS.findByHealthProfessional(profesional).stream().map(y->{
+                    ModelMapper m=new ModelMapper();
+                    return m.map(y,UserDTO.class);
+                }).collect(Collectors.toList());
+
+            }
+
 
         }
-
-
-}

@@ -37,7 +37,6 @@ public class RecommendationController {
         }).collect(Collectors.toList());
     }
 
-
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
     /*@GetMapping("/cantidades")
@@ -52,7 +51,6 @@ public class RecommendationController {
         }
         return dtoLista;
 
-    }
-    */
+    }*/
 
 }

@@ -1,6 +1,8 @@
 package com.example.vitality.dtos;
 
+
 import jdk.jfr.Category;
+
 
 public class ProductDTO {
     private int idProduct;
@@ -45,11 +47,14 @@ public class ProductDTO {
         this.stock = stock;
     }
 
-    public Category getCategory() {
+  public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
+
     }
-}
+
+    }
+

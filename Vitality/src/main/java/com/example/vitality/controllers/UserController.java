@@ -4,6 +4,7 @@ import com.example.vitality.entities.User;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +15,15 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private IUserService uS;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
         @PostMapping
         public void insertar(@RequestBody UserDTO userDTO){
             ModelMapper d= new ModelMapper();
             User user=d.map(userDTO,User.class);
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
             uS.insert(user);
         }
 
@@ -30,7 +35,7 @@ public class UserController {
         }
 
 
-        @GetMapping("/listar usuarios")
+        @GetMapping("/listarusuarios")
         public List<UserDTO> listar(){
             return uS.list().stream().map(y->{
                 ModelMapper m=new ModelMapper();

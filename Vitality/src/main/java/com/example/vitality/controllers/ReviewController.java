@@ -1,6 +1,8 @@
 package com.example.vitality.controllers;
 
 
+import com.example.vitality.dtos.PunctuationByUserDTO;
+import com.example.vitality.dtos.ReviewByUserDTO;
 import com.example.vitality.dtos.ReviewDTO;
 
 import com.example.vitality.entities.Review;
@@ -9,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,5 +59,31 @@ public class ReviewController {
         ReviewDTO dto=m.map(rS.listId(id),ReviewDTO.class);
         return dto;
 
+    }
+
+    @GetMapping("/sumas")
+    public List<PunctuationByUserDTO> sumaPuntuaciones(){
+        List<String[]> filaLista = rS.sumPunctuations();
+        List<PunctuationByUserDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            PunctuationByUserDTO dto=new PunctuationByUserDTO();
+            dto.setNameUser(columna[0]);
+            dto.setSumPunctuations(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/cantidades")
+    public List<ReviewByUserDTO> cantidadReseniasUsuario(){
+        List<String[]> filaLista = rS.quantityReviewByUser();
+        List<ReviewByUserDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            ReviewByUserDTO dto=new ReviewByUserDTO();
+            dto.setNameUser(columna[0]);
+            dto.setQuantityReview(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }

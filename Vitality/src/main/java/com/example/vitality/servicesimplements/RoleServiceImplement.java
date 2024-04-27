@@ -27,4 +27,9 @@ public class RoleServiceImplement implements IRoleService {
     public List<Role> list() {
         return rR.findAll();
     }
+
+    @Override
+    public Role listarId(int id) {
+        return rR.findById(id).orElse(new Role());
+    }
 }

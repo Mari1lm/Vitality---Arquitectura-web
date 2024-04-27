@@ -3,9 +3,25 @@ package com.example.vitality.repositories;
 
 import com.example.vitality.entities.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface IReviewRepository extends JpaRepository<Review,Integer> {
+
+
+    @Query(value ="select u.name_user as Usuarios, count(*) as Reviews \n" +
+            "from Users u inner join Review r \n" +
+            "on u.id_user=r.id_user \n" +
+            "group by u.name_user ",nativeQuery = true)
+    List<String[]> quantityReviewByUser();
+
+
+    @Query(value ="Select u.name_user,SUM(r.punctuation) FROM Users u inner join \n" +
+            "Review r on u.id_user=r.id_user \n" +
+            "group by u.name_user ",nativeQuery = true)
+    List<String[]> sumPunctuations();
 
 }

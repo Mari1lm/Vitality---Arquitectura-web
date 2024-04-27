@@ -13,4 +13,8 @@ public interface IReviewService {
     public void delete(int id);
 
     public Review listId(int id);
+
+    List<String[]> quantityReviewByUser();
+
+    List<String[]> sumPunctuations();
 }

@@ -12,4 +12,6 @@ public interface IRoleService {
     public void delete(int id);
 
     public List<Role> list();
+
+    public Role listarId(int id);
 }

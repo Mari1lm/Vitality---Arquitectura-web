@@ -45,8 +45,5 @@ public class CategoryController {
     public void eliminar(@PathVariable("id") Integer id){
         cS.delete(id);
     }
-    @GetMapping("/Ingresos_por_mes_y_categoria")
-    public List<Object[]> getIncomesByMonthAndCategory() {
-        return cS.findIncomesByMonthAndCategory();
-    }
+
 }

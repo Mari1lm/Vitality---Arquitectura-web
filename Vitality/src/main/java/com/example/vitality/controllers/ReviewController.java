@@ -9,6 +9,7 @@ import com.example.vitality.entities.Review;
 import com.example.vitality.servicesinterfaces.IReviewService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -62,6 +63,7 @@ public class ReviewController {
     }
 
     @GetMapping("/sumas")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
     public List<PunctuationByUserDTO> sumaPuntuaciones(){
         List<String[]> filaLista = rS.sumPunctuations();
         List<PunctuationByUserDTO> dtoLista=new ArrayList<>();
@@ -75,6 +77,7 @@ public class ReviewController {
     }
 
     @GetMapping("/cantidades")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
     public List<ReviewByUserDTO> cantidadReseniasUsuario(){
         List<String[]> filaLista = rS.quantityReviewByUser();
         List<ReviewByUserDTO> dtoLista=new ArrayList<>();

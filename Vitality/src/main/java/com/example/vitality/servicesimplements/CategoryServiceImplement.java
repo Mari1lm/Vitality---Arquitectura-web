@@ -28,4 +28,8 @@ public class CategoryServiceImplement implements ICategoryService {
     public List<Category> list() {
         return cR.findAll();
     }
+    @Override
+    public List<Object[]> findIncomesByMonthAndCategory() {
+        return cR.findIncomesByMonthAndCategory();
+    }
 }

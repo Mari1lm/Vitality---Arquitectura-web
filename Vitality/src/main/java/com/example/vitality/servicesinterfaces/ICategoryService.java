@@ -12,4 +12,5 @@ public interface ICategoryService {
     public void delete(int id);
 
     public List<Category> list();
+    List<Object[]> findIncomesByMonthAndCategory();
 }

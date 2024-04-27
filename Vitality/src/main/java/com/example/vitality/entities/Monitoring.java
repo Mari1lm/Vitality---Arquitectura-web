@@ -18,16 +18,21 @@ public class Monitoring {
     @Column(name = "nutritionalPlanMonitoring",nullable = false,length = 300)
     private String nutritionalPlanMonitoring;
 
+    @ManyToOne
+    @JoinColumn(name = "idHealthObjective")
+    private HealthObjective healthObjective;
+
     public Monitoring() {
     }
 
-    public Monitoring(int idMonitoring, int starDateMonitoring, int endDateMonitoring, String statusMonitoring, String historyMonitoring, String nutritionalPlanMonitoring) {
+    public Monitoring(int idMonitoring, int starDateMonitoring, int endDateMonitoring, String statusMonitoring, String historyMonitoring, String nutritionalPlanMonitoring, HealthObjective healthObjective) {
         this.idMonitoring = idMonitoring;
         this.starDateMonitoring = starDateMonitoring;
         this.endDateMonitoring = endDateMonitoring;
         this.statusMonitoring = statusMonitoring;
         this.historyMonitoring = historyMonitoring;
         this.nutritionalPlanMonitoring = nutritionalPlanMonitoring;
+        this.healthObjective = healthObjective;
     }
 
     public int getIdMonitoring() {
@@ -76,5 +81,13 @@ public class Monitoring {
 
     public void setNutritionalPlanMonitoring(String nutritionalPlanMonitoring) {
         this.nutritionalPlanMonitoring = nutritionalPlanMonitoring;
+    }
+
+    public HealthObjective getHealthObjective() {
+        return healthObjective;
+    }
+
+    public void setHealthObjective(HealthObjective healthObjective) {
+        this.healthObjective = healthObjective;
     }
 }

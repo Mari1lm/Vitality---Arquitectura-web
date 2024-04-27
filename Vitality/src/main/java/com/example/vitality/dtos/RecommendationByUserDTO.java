@@ -1,8 +1,18 @@
 package com.example.vitality.dtos;
 
+//DIEGO
 public class RecommendationByUserDTO {
+    private int idUser;
     private String nameUser;
     private int quantityRecommendation;
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public String getNameUser() {
         return nameUser;

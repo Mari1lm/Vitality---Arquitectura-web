@@ -1,5 +1,6 @@
 package com.example.vitality.servicesimplements;
 
+import com.example.vitality.entities.Product;
 import com.example.vitality.entities.Recommendation;
 import com.example.vitality.repositories.IRecommendationRepository;
 import com.example.vitality.servicesinterfaces.IRecommendationService;
@@ -18,6 +19,11 @@ public class RecommendationServiceImplement implements IRecommendationService {
     @Override
     public void delete(int id){rR.deleteById(id);}
 
-    //@Override
-    //public List<String[]> quantityRecommendationByMovie(){return rR.quantityRecommendationByMovie();}
+    @Override
+    public Recommendation listId(int id) {
+        return rR.findById(id).orElse(new Recommendation());
+    }
+
+    @Override
+    public List<String[]> quantityRecommendationByMovie(){return rR.quantityRecommendationByMovie();}
 }

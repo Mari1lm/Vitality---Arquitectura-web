@@ -1,5 +1,6 @@
 package com.example.vitality.servicesinterfaces;
 
+import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.Category;
 import com.example.vitality.servicesimplements.CategoryServiceImplement;
 
@@ -12,4 +13,8 @@ public interface ICategoryService {
     public void delete(int id);
 
     public List<Category> list();
+
+    public Category listId(int id);
+
+
 }

@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface IUserRepository extends JpaRepository<User,Integer> {
 
-    public User findByUsername(String username);
     public List<User> findByWeight (Float peso);
 
     public List<User> findBySubscription (String suscripcion);

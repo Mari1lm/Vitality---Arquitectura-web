@@ -1,4 +1,6 @@
 package com.example.vitality.controllers;
+import com.example.vitality.dtos.CountShoppingDTO;
+import com.example.vitality.dtos.StatusObjetiveDTO;
 import com.example.vitality.dtos.UserDTO;
 import com.example.vitality.entities.User;
 import com.example.vitality.servicesinterfaces.IUserService;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -87,5 +90,32 @@ public class UserController {
 
         }
 
+    @GetMapping("/Cantidaddecompras")
+    public List<CountShoppingDTO> cantidaddecompras() {
 
+        List<String[]> filaLista = uS.findCountShopping();
+        List<CountShoppingDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            CountShoppingDTO dto = new CountShoppingDTO();
+            dto.setNameUser(columna[0]);
+            dto.setCount(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/ObjetivosCompletados")
+    public List<StatusObjetiveDTO> objetivoscompletados() {
+
+        List<String[]> filaLista = uS.findObjetiveStatus();
+        List<StatusObjetiveDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            StatusObjetiveDTO dto = new StatusObjetiveDTO();
+            dto.setNameUser(columna[0]);
+            dto.setTypeObjetive(columna[1]);
+            dto.setStatus(columna[2]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 }

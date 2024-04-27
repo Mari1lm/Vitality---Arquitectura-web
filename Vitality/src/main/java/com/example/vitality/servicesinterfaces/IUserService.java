@@ -20,5 +20,10 @@ public interface IUserService {
 
     public List<User> findByHealthProfessional (String profesional);
 
+    public List<String[]> finUserSumProductsByType(String Type);
+
+    public List<String[]> findCountShopping ();
+
+    public List<String[]> findObjetiveStatus ();
 
 }

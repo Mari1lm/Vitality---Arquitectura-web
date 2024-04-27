@@ -18,4 +18,5 @@ public interface IUserService {
     public List<User> findBySubscription (String suscripcion);
 
     public List<User> findByHealthProfessional (String profesional);
+    List<Object[]> getUserReviewSummary();
 }

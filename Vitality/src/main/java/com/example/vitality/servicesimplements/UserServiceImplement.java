@@ -48,6 +48,8 @@ private IUserRepository uR;
     public List<User> findByHealthProfessional(String profesional) {
         return uR.findByHealthProfessional(profesional);
     }
-
-
+    @Override
+    public List<Object[]> getUserReviewSummary() {
+        return uR.findUserReviewSummary();
+    }
 }

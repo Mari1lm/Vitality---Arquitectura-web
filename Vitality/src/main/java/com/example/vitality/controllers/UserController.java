@@ -88,6 +88,9 @@ public class UserController {
                 }).collect(Collectors.toList());
 
             }
-
+            @GetMapping("/resumen_y_promedio_de_reseñas")
+            public List<Object[]> getUserReviewSummary() {
+                return uS.getUserReviewSummary();
+            }
 
         }

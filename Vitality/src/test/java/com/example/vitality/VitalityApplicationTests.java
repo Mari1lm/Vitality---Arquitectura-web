@@ -1,10 +1,9 @@
 package com.example.vitality;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VitalityApplicationTests {
+ class VitalityApplicationTests {
 
     @Test
     void contextLoads() {

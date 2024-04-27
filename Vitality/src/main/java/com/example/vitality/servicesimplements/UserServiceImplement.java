@@ -54,5 +54,15 @@ private IUserRepository uR;
         return uR.finUserSumProductsByType(Type);
     }
 
+    @Override
+    public List<String[]> findCountShopping() {
+        return uR.findCountShopping();
+    }
+
+    @Override
+    public List<String[]> findObjetiveStatus() {
+        return uR.findObjetiveStatus();
+    }
+
 
 }

@@ -25,6 +25,7 @@ public interface IUserRepository extends JpaRepository<User,Integer> {
             "ON CA.id_category = PR.category_id\n " +
             "WHERE CA.type_category = :Tipo\n " +
             "GROUP BY U.name_user  ",nativeQuery = true)
+
     public List<String[]> finUserSumProductsByType(@Param("Tipo") String Type);
 
     public List<User> findByWeight (Float peso);
@@ -32,4 +33,18 @@ public interface IUserRepository extends JpaRepository<User,Integer> {
     public List<User> findBySubscription (String suscripcion);
 
     public List<User> findByHealthProfessional (String profesional);
+
+    @Query(value = "select u.name_user, count(s.num_order_shopping) from users u \n " +
+            "inner join shopping s on s.user_id = u.id_user \n " +
+            "group by u.name_user ", nativeQuery = true)
+    public List<String[]> findCountShopping ();
+
+    @Query(value = "SELECT U.name_user, HO.type_objective, MO.status_monitoring\n " +
+            "FROM USERS U\n " +
+            "INNER JOIN health_objective HO\n " +
+            "ON HO.user_id = U.id_user\n " +
+            "INNER JOIN monitoring MO\n " +
+            "ON HO.id_health_objective = MO.id_health_objective\n " +
+            "WHERE MO.status_monitoring = 'Finalizado' ",nativeQuery = true)
+    public List<String[]> findObjetiveStatus ();
 }

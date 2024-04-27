@@ -21,74 +21,79 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-        @PostMapping
-        public void insertar(@RequestBody UserDTO userDTO){
-            ModelMapper d= new ModelMapper();
-            User user=d.map(userDTO,User.class);
-            String encodedPassword = passwordEncoder.encode(user.getPassword());
-            user.setPassword(encodedPassword);
-            uS.insert(user);
-        }
+    @PostMapping
+    public void insertar(@RequestBody UserDTO userDTO) {
+        ModelMapper d = new ModelMapper();
+        User user = d.map(userDTO, User.class);
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        uS.insert(user);
+    }
 
-        @PutMapping("/modificar")
-        public void modificar(@RequestBody UserDTO userDTO){
-            ModelMapper d= new ModelMapper();
-            User user=d.map(userDTO,User.class);
-            uS.insert(user);
-        }
-
-
-        @GetMapping("/listarusuarios")
-        public List<UserDTO> listar(){
-            return uS.list().stream().map(y->{
-                ModelMapper m=new ModelMapper();
-                return m.map(y,UserDTO.class);
-            }).collect(Collectors.toList());
-        }
+    @PutMapping("/modificar")
+    public void modificar(@RequestBody UserDTO userDTO) {
+        ModelMapper d = new ModelMapper();
+        User user = d.map(userDTO, User.class);
+        uS.insert(user);
+    }
 
 
-        @DeleteMapping("/{id}")
-        public void eliminar(@PathVariable("id") Integer id){
-
-            uS.delete(id);
-        }
-
-        @GetMapping("/{id} listar")
-        public UserDTO listarId(@PathVariable("id") Integer id){
-
-            ModelMapper m= new ModelMapper();
-            UserDTO dto=m.map(uS.listId(id),UserDTO.class);
-            return dto;
-
-        }
-
-        @GetMapping("/find")
-        public List<UserDTO> buscar(@RequestParam Float peso){
-            return uS.findByWeight(peso).stream().map(y->{
-                ModelMapper m=new ModelMapper();
-                return m.map(y,UserDTO.class);
-            }).collect(Collectors.toList());
-
-        }
+    @GetMapping("/listarusuarios")
+    public List<UserDTO> listar() {
+        return uS.list().stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, UserDTO.class);
+        }).collect(Collectors.toList());
+    }
 
 
-        @GetMapping("/findbysuscription")
-        public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion){
-            return uS.findBySubscription(suscripcion).stream().map(y->{
-                ModelMapper m=new ModelMapper();
-                return m.map(y,UserDTO.class);
-            }).collect(Collectors.toList());
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id) {
 
-        }
+        uS.delete(id);
+    }
 
-        @GetMapping("/findbyprofessional")
-        public List<UserDTO> buscarporprofesional(@RequestParam String profesional){
-            return uS.findByHealthProfessional(profesional).stream().map(y->{
-                ModelMapper m=new ModelMapper();
-                return m.map(y,UserDTO.class);
-            }).collect(Collectors.toList());
+    @GetMapping("/{id} listar")
+    public UserDTO listarId(@PathVariable("id") Integer id) {
 
-        }
+        ModelMapper m = new ModelMapper();
+        UserDTO dto = m.map(uS.listId(id), UserDTO.class);
+        return dto;
+
+    }
+
+    @GetMapping("/find")
+    public List<UserDTO> buscar(@RequestParam Float peso) {
+        return uS.findByWeight(peso).stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, UserDTO.class);
+        }).collect(Collectors.toList());
+
+    }
+
+
+    @GetMapping("/findbysuscription")
+    public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion) {
+        return uS.findBySubscription(suscripcion).stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, UserDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+
+    @GetMapping("/findbyprofessional")
+    public List<UserDTO> buscarporprofesional(@RequestParam String profesional) {
+        return uS.findByHealthProfessional(profesional).stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, UserDTO.class);
+        }).collect(Collectors.toList());
+
+    }
+
+    @GetMapping("/resumen_y_promedio_de_reseñas")
+    public List<Object[]> getUserReviewSummary() {
+        return uS.getUserReviewSummary();
+    }
 
     @GetMapping("/Cantidaddecompras")
     public List<CountShoppingDTO> cantidaddecompras() {
@@ -103,6 +108,7 @@ public class UserController {
         }
         return dtoLista;
     }
+
 
     @GetMapping("/ObjetivosCompletados")
     public List<StatusObjetiveDTO> objetivoscompletados() {

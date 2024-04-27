@@ -65,5 +65,9 @@ private IUserRepository uR;
         return uR.findObjetiveStatus();
     }
 
+    @Override
+    public List<Object[]> getUserReviewSummary() {
+        return uR.findUserReviewSummary();
+    }
 
 }

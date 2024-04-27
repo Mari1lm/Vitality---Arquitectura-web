@@ -17,12 +17,12 @@ public class ShoppingController {
     private IShoppingService sS;
 
     @PostMapping
-    public void insertar(@RequestBody ShoppingDTO shoppingDTO){
-        ModelMapper d= new ModelMapper();
-        Shopping shopping=d.map(shoppingDTO, Shopping.class);
-        sS.insert(shopping);
-    }
 
+    public void insertar(@RequestBody ShoppingDTO shoppingDTO) {
+        ModelMapper d = new ModelMapper();
+        Shopping shopping = d.map(shoppingDTO, Shopping.class);
+
+    }
     @PutMapping
     public void modificar(@RequestBody ShoppingDTO shoppingDTO){
         ModelMapper d= new ModelMapper();
@@ -39,6 +39,7 @@ public class ShoppingController {
         }).collect(Collectors.toList());
     }
 
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
@@ -47,9 +48,9 @@ public class ShoppingController {
     @GetMapping("/{id}")
     public ShoppingDTO listarId(@PathVariable("id") Integer id){
 
-        ModelMapper m= new ModelMapper();
-        ShoppingDTO dto=m.map(sS.listId(id),ShoppingDTO.class);
-        return dto;
+            ModelMapper m = new ModelMapper();
+            ShoppingDTO dto = m.map(sS.listId(id), ShoppingDTO.class);
+            return dto;
 
-    }
+        }
 }

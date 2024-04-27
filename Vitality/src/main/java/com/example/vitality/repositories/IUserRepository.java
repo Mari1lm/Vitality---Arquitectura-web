@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -35,6 +34,7 @@ public interface IUserRepository extends JpaRepository<User,Integer> {
 
     public List<User> findByHealthProfessional (String profesional);
 
+
     @Query(value = "select u.name_user, count(s.num_order_shopping) from users u \n " +
             "inner join shopping s on s.user_id = u.id_user \n " +
             "group by u.name_user ", nativeQuery = true)
@@ -48,5 +48,14 @@ public interface IUserRepository extends JpaRepository<User,Integer> {
             "ON HO.id_health_objective = MO.id_health_objective\n " +
             "WHERE MO.status_monitoring = 'Finalizado' ",nativeQuery = true)
     public List<String[]> findObjetiveStatus ();
+    @Query(value = "SELECT u.name_user AS nombre_usuario, " +
+            "COUNT(r.id_review) AS total_revisiones, " +
+            "AVG(r.punctuation) AS promedio_puntuacion " +
+            "FROM users u " +
+            "LEFT JOIN review r " +
+            "ON u.id_user = r.user_id " +
+            "GROUP BY u.name_user", nativeQuery = true)
+    List<Object[]> findUserReviewSummary();
+
 
 }

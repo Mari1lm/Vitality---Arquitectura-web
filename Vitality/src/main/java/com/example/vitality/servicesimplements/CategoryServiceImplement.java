@@ -1,11 +1,9 @@
 package com.example.vitality.servicesimplements;
 
 import com.example.vitality.entities.Category;
-import com.example.vitality.entities.Product;
 import com.example.vitality.repositories.ICategoryRepository;
 import com.example.vitality.servicesinterfaces.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.AccessType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,8 +28,15 @@ public class CategoryServiceImplement implements ICategoryService {
         return cR.findAll();
     }
 
+
     @Override
     public Category listId(int id) {
         return cR.findById(id).orElse(new Category());
     }
+
+    @Override
+    public List<Object[]> findIncomesByMonthAndCategory() {
+        return cR.findIncomesByMonthAndCategory();
+    }
 }
+

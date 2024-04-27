@@ -49,11 +49,14 @@ public class CategoryController {
 
 
     @GetMapping("/{id}")
-    public CategoryDTO listarId(@PathVariable("id") Integer id){
+    public CategoryDTO listarId(@PathVariable("id") Integer id) {
 
-        ModelMapper m= new ModelMapper();
-        CategoryDTO dto=m.map(cS.listId(id),CategoryDTO.class);
+        ModelMapper m = new ModelMapper();
+        CategoryDTO dto = m.map(cS.listId(id), CategoryDTO.class);
         return dto;
-
+    }
+    @GetMapping("/Ingresos_por_mes_y_categoria")
+    public List<Object[]> getIncomesByMonthAndCategory() {
+        return cS.findIncomesByMonthAndCategory();
     }
 }

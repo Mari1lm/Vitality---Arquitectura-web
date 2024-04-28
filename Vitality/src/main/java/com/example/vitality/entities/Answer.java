@@ -13,7 +13,7 @@ public class Answer {
     private String solution;
     @ManyToOne
     @JoinColumn(name="userId")
-    private User user;
+    private Users user;
 
 
 
@@ -21,7 +21,7 @@ public class Answer {
     }
 
 
-    public Answer(int idAnswer, String solution, User user) {
+    public Answer(int idAnswer, String solution, Users user) {
         this.idAnswer = idAnswer;
         this.solution = solution;
         this.user = user;
@@ -44,11 +44,11 @@ public class Answer {
         this.solution = solution;
     }
 
-    public User getUser() {
+    public Users getUsers() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUsers(Users user) {
         this.user = user;
     }
 

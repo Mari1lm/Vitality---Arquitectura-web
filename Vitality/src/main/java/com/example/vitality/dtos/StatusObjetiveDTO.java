@@ -1,16 +1,16 @@
 package com.example.vitality.dtos;
 
 public class StatusObjetiveDTO {
-    public String nameUser;
+    public String username;
     public String typeObjetive;
     public String status;
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getTypeObjetive() {

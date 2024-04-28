@@ -5,6 +5,7 @@ import com.example.vitality.entities.Monitoring;
 import com.example.vitality.servicesinterfaces.IMonitoringService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ public class MonitoringController {
     private IMonitoringService mR;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody MonitoringDTO monitoringDTO) {
         ModelMapper d = new ModelMapper();
         Monitoring monitoring = d.map(monitoringDTO, Monitoring.class);
@@ -23,6 +25,7 @@ public class MonitoringController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MonitoringDTO> listar(){
         return mR.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -30,11 +33,13 @@ public class MonitoringController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
 
         mR.delete(id);
     }
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public MonitoringDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();
@@ -44,6 +49,7 @@ public class MonitoringController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody MonitoringDTO monitoringDTO){
         ModelMapper d= new ModelMapper();
         Monitoring monitoring=d.map(monitoringDTO,Monitoring.class);

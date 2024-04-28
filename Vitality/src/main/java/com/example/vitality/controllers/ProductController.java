@@ -5,6 +5,7 @@ import com.example.vitality.entities.Product;
 import com.example.vitality.servicesinterfaces.IProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
      private IProductService pS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody ProductDTO productDTO){
         ModelMapper d= new ModelMapper();
         Product product=d.map(productDTO,Product.class);
@@ -30,6 +32,7 @@ import java.util.stream.Collectors;
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody ProductDTO productDTO){
         ModelMapper d= new ModelMapper();
         Product product=d.map(productDTO,Product.class);
@@ -37,6 +40,7 @@ import java.util.stream.Collectors;
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('USER')")
     public List<ProductDTO> listar(){
         return pS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -46,6 +50,7 @@ import java.util.stream.Collectors;
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
 
         pS.delete(id);
@@ -53,6 +58,7 @@ import java.util.stream.Collectors;
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public ProductDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();

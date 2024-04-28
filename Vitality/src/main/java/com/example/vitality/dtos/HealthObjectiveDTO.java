@@ -1,7 +1,8 @@
 package com.example.vitality.dtos;
 
 import com.example.vitality.entities.Monitoring;
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
+import com.example.vitality.entities.Users;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -9,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 public class HealthObjectiveDTO {
     private int idHealthObjective;
     private String tipoObjetivo;
-    private User user;
+    private Users user;
 
     public int getIdHealthObjective() {
         return idHealthObjective;
@@ -27,11 +28,11 @@ public class HealthObjectiveDTO {
         this.tipoObjetivo = tipoObjetivo;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

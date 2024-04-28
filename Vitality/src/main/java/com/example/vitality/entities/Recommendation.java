@@ -14,12 +14,12 @@ public class Recommendation {
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private Users user;
 
     public Recommendation() {
     }
 
-    public Recommendation(int idRecommendation, String descriptionRecommendation, User user) {
+    public Recommendation(int idRecommendation, String descriptionRecommendation, Users user) {
         this.idRecommendation = idRecommendation;
         this.descriptionRecommendation = descriptionRecommendation;
         this.user = user;
@@ -41,11 +41,11 @@ public class Recommendation {
         this.descriptionRecommendation = descriptionRecommendation;
     }
 
-    public User getUser() {
+    public Users getUsers() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUsers(Users user) {
         this.user = user;
     }
 }

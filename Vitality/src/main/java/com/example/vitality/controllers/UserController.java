@@ -2,10 +2,13 @@ package com.example.vitality.controllers;
 import com.example.vitality.dtos.CountShoppingDTO;
 import com.example.vitality.dtos.StatusObjetiveDTO;
 import com.example.vitality.dtos.UserDTO;
-import com.example.vitality.entities.User;
+import com.example.vitality.dtos.UserDTO;
+import com.example.vitality.entities.Users;
+import com.example.vitality.servicesinterfaces.IUserService;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,23 +25,26 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody UserDTO userDTO) {
         ModelMapper d = new ModelMapper();
-        User user = d.map(userDTO, User.class);
+        Users user = d.map(userDTO, Users.class);
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         uS.insert(user);
     }
 
     @PutMapping("/modificar")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody UserDTO userDTO) {
         ModelMapper d = new ModelMapper();
-        User user = d.map(userDTO, User.class);
+        Users user = d.map(userDTO, Users.class);
         uS.insert(user);
     }
 
 
     @GetMapping("/listarusuarios")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UserDTO> listar() {
         return uS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -48,12 +54,14 @@ public class UserController {
 
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id) {
 
         uS.delete(id);
     }
 
     @GetMapping("/{id} listar")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public UserDTO listarId(@PathVariable("id") Integer id) {
 
         ModelMapper m = new ModelMapper();
@@ -63,6 +71,7 @@ public class UserController {
     }
 
     @GetMapping("/find")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')" )
     public List<UserDTO> buscar(@RequestParam Float peso) {
         return uS.findByWeight(peso).stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -73,6 +82,7 @@ public class UserController {
 
 
     @GetMapping("/findbysuscription")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')" )
     public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion) {
         return uS.findBySubscription(suscripcion).stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -82,6 +92,7 @@ public class UserController {
 
 
     @GetMapping("/findbyprofessional")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')" )
     public List<UserDTO> buscarporprofesional(@RequestParam String profesional) {
         return uS.findByHealthProfessional(profesional).stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -91,18 +102,20 @@ public class UserController {
     }
 
     @GetMapping("/resumen_y_promedio_de_reseñas")
-    public List<Object[]> getUserReviewSummary() {
-        return uS.getUserReviewSummary();
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<Object[]> getUsersReviewSummary() {
+        return uS.getUsersReviewSummary();
     }
 
     @GetMapping("/Cantidaddecompras")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')" )
     public List<CountShoppingDTO> cantidaddecompras() {
 
         List<String[]> filaLista = uS.findCountShopping();
         List<CountShoppingDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filaLista) {
             CountShoppingDTO dto = new CountShoppingDTO();
-            dto.setNameUser(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setCount(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
@@ -111,13 +124,14 @@ public class UserController {
 
 
     @GetMapping("/ObjetivosCompletados")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')" )
     public List<StatusObjetiveDTO> objetivoscompletados() {
 
         List<String[]> filaLista = uS.findObjetiveStatus();
         List<StatusObjetiveDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filaLista) {
             StatusObjetiveDTO dto = new StatusObjetiveDTO();
-            dto.setNameUser(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setTypeObjetive(columna[1]);
             dto.setStatus(columna[2]);
             dtoLista.add(dto);

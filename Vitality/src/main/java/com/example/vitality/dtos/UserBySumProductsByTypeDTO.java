@@ -2,16 +2,16 @@ package com.example.vitality.dtos;
 
 //DIEGO
 public class UserBySumProductsByTypeDTO {
-    private String nameUser;
+    private String username;
 
     private int SumProdByType;
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getSumProdByType() {

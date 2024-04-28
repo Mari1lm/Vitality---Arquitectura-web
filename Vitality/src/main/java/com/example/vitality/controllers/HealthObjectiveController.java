@@ -6,6 +6,7 @@ import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.HealthObjective;
 import com.example.vitality.servicesinterfaces.IHealthObjectiveService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +16,14 @@ import java.util.stream.Collectors;
 public class HealthObjectiveController {
     private IHealthObjectiveService hS;
     @PostMapping
+    @PreAuthorize("hasAuthority('USER')")
     public void insertar(@RequestBody HealthObjectiveDTO healthObjectiveDTO){
         ModelMapper d= new ModelMapper();
         HealthObjective healthObjective =d.map(healthObjectiveDTO,HealthObjective.class);
         hS.insert(healthObjective);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('PROFESIONAL')")
     public List<HealthObjectiveDTO> listar(){
         return hS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -28,11 +31,13 @@ public class HealthObjectiveController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public void eliminar(@PathVariable("id") Integer id){
 
         hS.delete(id);
     }
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public HealthObjectiveDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();
@@ -42,6 +47,7 @@ public class HealthObjectiveController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('USER')")
     public void modificar(@RequestBody HealthObjectiveDTO healthObjectiveDTO){
         ModelMapper d= new ModelMapper();
         HealthObjective healthObjective=d.map(healthObjectiveDTO,HealthObjective.class);

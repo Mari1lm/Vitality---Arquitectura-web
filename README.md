@@ -34,3 +34,11 @@ Vitality es una plataforma web potenciada por inteligencia artificial que ofrece
 - Gestión de productos, usuarios y perfiles.
 - Moderación del contenido generado por los usuarios.
 - Supervisión del funcionamiento general del sistema.
+
+dependencies {
+implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5',
+// Uncomment the next line if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
+//'org.bouncycastle:bcprov-jdk15on:1.70',
+'io.jsonwebtoken:jjwt-jackson:0.11.5' // or 'io.jsonwebtoken:jjwt-gson:0.11.5' for gson
+}

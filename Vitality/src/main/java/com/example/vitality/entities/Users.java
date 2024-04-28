@@ -5,19 +5,22 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-    @Table(name="Users")
-    public class User implements Serializable {
+    @Table(name="users")
+    public class Users implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int idUser;
-        @Column(name = "nameUser",nullable = false,length = 50)
-        private String nameUser;
+        @Column(length = 30, unique = true)
+        private String username;
         @Column(name = "email",nullable = false,length = 100)
         private String email;
-        @Column(name = "password",nullable = false,length = 20)
+        @Column(length = 200)
         private String password;
 
         private Boolean enabled;
+        @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        @JoinColumn(name = "user_id")
+        private List<Role> roles;
         @Column(name = "address",nullable = false,length = 100)
 
         private String address;
@@ -30,16 +33,13 @@ import java.util.List;
         @Column(name = "healthProfessional",nullable = false,length = 10)
         private String healthProfessional;
 
-        @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        @JoinColumn(name = "user_id")
-        private List<Role> roles;
 
-    public User() {
+    public Users() {
     }
 
-    public User(int idUser, String nameUser, String email, String password, Boolean enabled, String address, Float weight, int height, String subscription, String healthProfessional, List<Role> roles) {
+    public Users(int idUser, String username, String email, String password, Boolean enabled, String address, Float weight, int height, String subscription, String healthProfessional, List<Role> roles) {
         this.idUser = idUser;
-        this.nameUser = nameUser;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.enabled = enabled;
@@ -59,12 +59,12 @@ import java.util.List;
         this.idUser = idUser;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

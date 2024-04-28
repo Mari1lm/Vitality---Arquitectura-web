@@ -6,6 +6,7 @@ import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.Specialty;
 import com.example.vitality.servicesinterfaces.IAnswerService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class AnswerController {
     private IAnswerService aS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody AnswerDTO answerDTO){
         ModelMapper d= new ModelMapper();
         Answer answer=d.map(answerDTO,Answer.class);
@@ -29,11 +31,13 @@ public class AnswerController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
 
         aS.delete(id);
     }
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public AnswerDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();
@@ -42,6 +46,7 @@ public class AnswerController {
 
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody AnswerDTO answerDTO){
         ModelMapper d= new ModelMapper();
         Answer answer=d.map(answerDTO,Answer.class);

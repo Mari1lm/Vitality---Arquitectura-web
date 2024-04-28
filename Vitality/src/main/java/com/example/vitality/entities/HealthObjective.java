@@ -12,13 +12,13 @@ public class HealthObjective {
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private Users user;
 
 
     public HealthObjective() {
     }
 
-    public HealthObjective(int idHealthObjective, String typeObjective, User user) {
+    public HealthObjective(int idHealthObjective, String typeObjective, Users user) {
         this.idHealthObjective = idHealthObjective;
         this.typeObjective = typeObjective;
         this.user = user;
@@ -40,11 +40,11 @@ public class HealthObjective {
         this.typeObjective = typeObjective;
     }
 
-    public User getUser() {
+    public Users getUsers() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUsers(Users user) {
         this.user = user;
     }
 

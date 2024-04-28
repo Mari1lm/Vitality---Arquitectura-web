@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 public class UserDTO {
 
     private int idUser;
-    private String nameUser;
+    private String username;
     private String email;
     private String password;
 
@@ -33,12 +33,12 @@ public class UserDTO {
         this.idUser = idUser;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

@@ -1,9 +1,5 @@
 package com.example.vitality.controllers;
 
-import com.example.vitality.securities.JwtRequest;
-import com.example.vitality.securities.JwtResponse;
-import com.example.vitality.securities.JwtTokenUtil;
-import com.example.vitality.servicesimplements.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,11 +11,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import  com.example.vitality.securities.JwtRequest;
+import com.example.vitality.securities.JwtResponse;
+import com.example.vitality.securities.JwtTokenUtil;
+import com.example.vitality.servicesimplements.JwtUserDetailsService;
 
+//Clase 3
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
-
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired

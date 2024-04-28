@@ -1,6 +1,7 @@
 package com.example.vitality.dtos;
 
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
+import com.example.vitality.entities.Users;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -10,7 +11,7 @@ public class AnswerDTO {
 
     private String solution;
 
-    private User user;
+    private Users user;
 
     public int getIdAnswer() {
         return idAnswer;
@@ -28,11 +29,11 @@ public class AnswerDTO {
         this.solution = solution;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 }

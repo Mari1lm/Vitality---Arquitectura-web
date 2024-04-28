@@ -24,6 +24,7 @@ public class ReviewController {
     private IReviewService rS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('USER')")
     public void insertar(@RequestBody ReviewDTO reviewDTO){
         ModelMapper d= new ModelMapper();
         Review review=d.map(reviewDTO,Review.class);
@@ -31,6 +32,7 @@ public class ReviewController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('USER')")
     public void modificar(@RequestBody ReviewDTO reviewDTO){
         ModelMapper d= new ModelMapper();
         Review review=d.map(reviewDTO,Review.class);
@@ -38,6 +40,7 @@ public class ReviewController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('USER')")
     public List<ReviewDTO> listar(){
         return rS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -47,6 +50,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public void eliminar(@PathVariable("id") Integer id){
 
         rS.delete(id);
@@ -54,6 +58,7 @@ public class ReviewController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ReviewDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();
@@ -63,13 +68,13 @@ public class ReviewController {
     }
 
     @GetMapping("/sumas")
-    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER') OR hasAuthority('PROFESIONAL')")
     public List<PunctuationByUserDTO> sumaPuntuaciones(){
         List<String[]> filaLista = rS.sumPunctuations();
         List<PunctuationByUserDTO> dtoLista=new ArrayList<>();
         for (String[] columna:filaLista){
             PunctuationByUserDTO dto=new PunctuationByUserDTO();
-            dto.setNameUser(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setSumPunctuations(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
@@ -83,7 +88,7 @@ public class ReviewController {
         List<ReviewByUserDTO> dtoLista=new ArrayList<>();
         for (String[] columna:filaLista){
             ReviewByUserDTO dto=new ReviewByUserDTO();
-            dto.setNameUser(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setQuantityReview(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }

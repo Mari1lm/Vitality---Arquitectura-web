@@ -1,14 +1,14 @@
 package com.example.vitality.dtos;
 
 
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 
 public class RoleDTO {
     private int idRole;
 
     private String nameRole;
 
-    private User user;
+    private Users user;
 
     public int getIdRole() {
         return idRole;
@@ -26,11 +26,11 @@ public class RoleDTO {
         this.nameRole = nameRole;
     }
 
-    public User getUser() {
+    public Users getUsers() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUsers(Users user) {
         this.user = user;
     }
 }

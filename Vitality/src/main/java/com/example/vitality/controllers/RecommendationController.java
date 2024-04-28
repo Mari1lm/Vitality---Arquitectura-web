@@ -8,6 +8,7 @@ import com.example.vitality.entities.Recommendation;
 import com.example.vitality.servicesinterfaces.IRecommendationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class RecommendationController {
     private IRecommendationService rS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('PROFESIONAL')")
     public void insertar(@RequestBody RecommendationDTO recommendationDTO){
         ModelMapper m = new ModelMapper();
         Recommendation r = m.map(recommendationDTO, Recommendation.class);
@@ -27,6 +29,7 @@ public class RecommendationController {
 
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('USER')")
     public List<RecommendationDTO> listar(){
         return rS.list().stream().map(y-> {
             ModelMapper m = new ModelMapper();
@@ -34,9 +37,13 @@ public class RecommendationController {
         }).collect(Collectors.toList());
     }
 
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PROFESIONAL')")
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public RecommendationDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();
@@ -45,6 +52,7 @@ public class RecommendationController {
 
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('PROFESIONAL')")
     public void modificar(@RequestBody RecommendationDTO recommendationDTO){
         ModelMapper d= new ModelMapper();
         Recommendation recommendation=d.map(recommendationDTO,Recommendation.class);
@@ -52,13 +60,14 @@ public class RecommendationController {
     }
 
     @GetMapping("/cantidades por Usuario")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){
         List<String[]> filaLista = rS.quantityRecommendationByMovie();
         List<RecommendationByUserDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filaLista){
             RecommendationByUserDTO dto = new RecommendationByUserDTO();
             dto.setIdUser(Integer.parseInt(columna[0]));
-            dto.setNameUser(columna[1]);
+            dto.setUsername(columna[1]);
             dto.setQuantityRecommendation(Integer.parseInt(columna[2]));
             dtoLista.add(dto);
         }

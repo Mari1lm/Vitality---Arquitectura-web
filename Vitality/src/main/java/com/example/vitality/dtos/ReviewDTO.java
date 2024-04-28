@@ -1,6 +1,6 @@
 package com.example.vitality.dtos;
 
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -14,7 +14,7 @@ public class ReviewDTO {
     private String comment;
 
 
-    private User user;
+    private Users user;
 
     public int getIdReview() {
         return idReview;
@@ -40,11 +40,11 @@ public class ReviewDTO {
         this.comment = comment;
     }
 
-    public User getUser() {
+    public Users getUsers() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUsers(Users user) {
         this.user = user;
     }
 }

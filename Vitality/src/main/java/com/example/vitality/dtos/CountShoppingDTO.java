@@ -1,15 +1,15 @@
 package com.example.vitality.dtos;
 
 public class CountShoppingDTO {
-    private String nameUser;
+    private String username;
     private int count;
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getCount() {

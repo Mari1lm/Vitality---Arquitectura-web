@@ -1,6 +1,6 @@
 package com.example.vitality.servicesimplements;
 
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 import com.example.vitality.repositories.IUserRepository;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ public class UserServiceImplement implements IUserService {
 private IUserRepository uR;
 
     @Override
-    public void insert(User user) {
+    public void insert(Users user) {
         uR.save(user);
     }
 
     @Override
-    public List<User> list() {
+    public List<Users> list() {
         return uR.findAll();
     }
 
@@ -30,29 +30,30 @@ private IUserRepository uR;
     }
 
     @Override
-    public User listId(int id) {
-        return uR.findById(id).orElse(new User());
+    public Users listId(int id) {
+        return uR.findById(id).orElse(new Users());
     }
 
     @Override
-    public List<User> findByWeight(Float peso) {
+    public List<Users> findByWeight(Float peso) {
         return uR.findByWeight(peso);
     }
 
     @Override
-    public List<User> findBySubscription(String suscripcion) {
+    public List<Users> findBySubscription(String suscripcion) {
         return uR.findBySubscription(suscripcion);
     }
 
     @Override
-    public List<User> findByHealthProfessional(String profesional) {
+    public List<Users> findByHealthProfessional(String profesional) {
         return uR.findByHealthProfessional(profesional);
     }
 
     @Override
-    public List<String[]> finUserSumProductsByType(String Type) {
-        return uR.finUserSumProductsByType(Type);
+    public List<String[]> findUsersSumProductsByType(String Type) {
+        return uR.findUsersSumProductsByType(Type);
     }
+
 
 
     @Override
@@ -66,8 +67,8 @@ private IUserRepository uR;
     }
 
     @Override
-    public List<Object[]> getUserReviewSummary() {
-        return uR.findUserReviewSummary();
+    public List<Object[]> getUsersReviewSummary() {
+        return uR.findUsersReviewSummary();
     }
 
 }

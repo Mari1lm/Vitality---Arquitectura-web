@@ -4,10 +4,11 @@ import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.CategoryDTO;
 import com.example.vitality.dtos.UserDTO;
 import com.example.vitality.entities.Category;
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class CategoryController {
     private ICategoryService cS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody CategoryDTO categoryDTO){
         ModelMapper d= new ModelMapper();
         Category category=d.map(categoryDTO, Category.class);
@@ -27,6 +29,7 @@ public class CategoryController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody CategoryDTO categoryDTO){
         ModelMapper d= new ModelMapper();
         Category category=d.map(categoryDTO, Category.class);
@@ -43,12 +46,14 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         cS.delete(id);
     }
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public CategoryDTO listarId(@PathVariable("id") Integer id) {
 
         ModelMapper m = new ModelMapper();
@@ -56,6 +61,7 @@ public class CategoryController {
         return dto;
     }
     @GetMapping("/Ingresos_por_mes_y_categoria")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<Object[]> getIncomesByMonthAndCategory() {
         return cS.findIncomesByMonthAndCategory();
     }

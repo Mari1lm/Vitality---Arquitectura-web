@@ -9,6 +9,7 @@ import com.example.vitality.servicesinterfaces.ICategoryService;
 import com.example.vitality.servicesinterfaces.IShoppingDetailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ShoppingDetailController {
         @Autowired
         private IShoppingDetailService sS;
         @PostMapping
+        @PreAuthorize("hasAuthority('ADMIN')")
         public void insertar(@RequestBody ShoppingDetailDTO shoppingDetailDTO){
             ModelMapper d= new ModelMapper();
             ShoppingDetail shoppingDetail=d.map(shoppingDetailDTO, ShoppingDetail.class);
@@ -27,6 +29,7 @@ public class ShoppingDetailController {
         }
 
         @PutMapping
+        @PreAuthorize("hasAuthority('ADMIN')")
         public void modificar(@RequestBody ShoppingDetailDTO shoppingDetailDTO){
             ModelMapper d= new ModelMapper();
             ShoppingDetail shoppingDetail=d.map(shoppingDetailDTO, ShoppingDetail.class);
@@ -35,6 +38,7 @@ public class ShoppingDetailController {
 
 
         @GetMapping
+        @PreAuthorize("hasAuthority('ADMIN')")
         public List<ShoppingDetailDTO> listar(){
             return sS.list().stream().map(y->{
                 ModelMapper m=new ModelMapper();
@@ -43,11 +47,13 @@ public class ShoppingDetailController {
         }
 
         @DeleteMapping("/{id}")
+        @PreAuthorize("hasAuthority('ADMIN')")
         public void eliminar(@PathVariable("id") Integer id){
             sS.delete(id);
         }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ShoppingDetailDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();

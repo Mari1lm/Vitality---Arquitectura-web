@@ -27,6 +27,14 @@ public interface IUserRepository extends JpaRepository<User,Integer> {
             "GROUP BY U.name_user  ",nativeQuery = true)
     public List<String[]> finUserSumProductsByType(@Param("Tipo") String Type);
 
+    @Query(value = "SELECT u.name_user, COUNT(h) " +
+            "FROM User u " +
+            "JOIN HealthObjective h ON u.id_user = h.id_user " + // Suponiendo que `HealthObjective` es la tabla de objetivos de salud
+            "WHERE u.subscription = 'si' " +
+            "GROUP BY u.id_user, u.name_user",
+            nativeQuery = true)
+    List<Object[]> countHealthObjectivesForSubscribedUsers();
+
     public List<User> findByWeight (Float peso);
 
     public List<User> findBySubscription (String suscripcion);

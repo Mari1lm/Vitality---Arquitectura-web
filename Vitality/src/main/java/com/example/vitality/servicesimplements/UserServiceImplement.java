@@ -53,6 +53,11 @@ private IUserRepository uR;
     public List<String[]> finUserSumProductsByType(String Type) {
         return uR.finUserSumProductsByType(Type);
     }
+    @Override
+    public List<Object[]> countHealthObjectivesForSubscribedUsers() {
+
+        return uR.countHealthObjectivesForSubscribedUsers();
+    }
 
 
 }

@@ -21,4 +21,6 @@ public interface IUserService {
     public List<User> findByHealthProfessional (String profesional);
 
     public List<String[]> finUserSumProductsByType(String Type);
+    List<Object[]> countHealthObjectivesForSubscribedUsers();
+
 }

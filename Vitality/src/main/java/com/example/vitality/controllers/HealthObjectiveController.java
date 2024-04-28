@@ -47,4 +47,8 @@ public class HealthObjectiveController {
         HealthObjective healthObjective=d.map(healthObjectiveDTO,HealthObjective.class);
         hS.insert(healthObjective);
     }
+    @GetMapping("/Mostrar_Objetivo_Usuario")
+    public List<Object[]> getIncomesByMonthAndCategory() {
+        return hS.findHealthObjectivesByUser();
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class HealthObjectiveServiceImplement implements IHealthObjectiveService {
+public class HealthObjectiveServiceImplement implements IHealthObjectiveService{
 
     @Autowired
     private IHealthObjectiveRepository hR;
@@ -33,5 +33,10 @@ public class HealthObjectiveServiceImplement implements IHealthObjectiveService 
     public HealthObjective listId(int id) {
         return hR.findById(id).orElse(new HealthObjective());
 
+    }
+    @Override
+    public List<Object[]> findHealthObjectivesByUser() {
+
+        return hR.findHealthObjectivesByUser();
     }
 }

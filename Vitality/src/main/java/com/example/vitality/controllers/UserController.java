@@ -106,6 +106,11 @@ public class UserController {
         }
         return  dtoLista;
     }
+    @GetMapping("/Usuarios_suscritos")
+    public List<Object[]> getHealthObjectivesForSubscribedUsers() {
+        // Llama al servicio para obtener los objetivos de salud de los usuarios suscritos
+        return uS.countHealthObjectivesForSubscribedUsers();
+    }
 
 
 }

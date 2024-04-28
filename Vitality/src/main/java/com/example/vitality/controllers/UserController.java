@@ -1,7 +1,5 @@
 package com.example.vitality.controllers;
-import com.example.vitality.dtos.CountShoppingDTO;
-import com.example.vitality.dtos.StatusObjetiveDTO;
-import com.example.vitality.dtos.UserDTO;
+import com.example.vitality.dtos.*;
 import com.example.vitality.dtos.UserDTO;
 import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.IUserService;
@@ -134,6 +132,20 @@ public class UserController {
             dto.setUsername(columna[0]);
             dto.setTypeObjetive(columna[1]);
             dto.setStatus(columna[2]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/Usuarios_suscritos")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<ObjectiveByUsersDTO> getHealthObjectivesForSubscribedUsers() {
+        List<String[]> filaLista = uS.countHealthObjectivesForSubscribedUsers();
+        List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
+            dto.setUsername(columna[0]);
+            dto.setQuantity(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

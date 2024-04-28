@@ -9,5 +9,7 @@ public interface IHealthObjectiveService {
     public List<HealthObjective> list();
     public void delete(int id);
     public HealthObjective listId(int id);
+    List<String[]> findHealthObjectivesByUser();
+
 
 }

@@ -71,4 +71,9 @@ private IUserRepository uR;
         return uR.findUsersReviewSummary();
     }
 
+    @Override
+    public List<String[]> countHealthObjectivesForSubscribedUsers() {
+        return uR.countHealthObjectivesForSubscribedUsers();
+    }
+
 }

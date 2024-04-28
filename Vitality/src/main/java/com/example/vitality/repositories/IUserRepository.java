@@ -66,4 +66,12 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
             "WHERE CA.type_category = :Tipo\n " +
             "GROUP BY U.username  ",nativeQuery = true)
     List<String[]> findUsersSumProductsByType(@Param("Tipo") String type);
+
+    @Query(value = "SELECT u.username, COUNT(h) " +
+            "FROM User u " +
+            "JOIN HealthObjective h ON u.id_user = h.id_user " + // Suponiendo que `HealthObjective` es la tabla de objetivos de salud
+            "WHERE u.subscription = 'si' " +
+            "GROUP BY u.id_user, u.username",
+            nativeQuery = true)
+    List<String[]> countHealthObjectivesForSubscribedUsers();
 }

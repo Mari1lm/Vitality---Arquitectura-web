@@ -28,4 +28,6 @@ public interface IUserService {
 
     List<Object[]> getUsersReviewSummary();
 
+    List<String[]> countHealthObjectivesForSubscribedUsers();
+
 }

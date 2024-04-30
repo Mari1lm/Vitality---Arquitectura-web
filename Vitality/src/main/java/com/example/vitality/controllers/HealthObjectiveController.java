@@ -2,7 +2,6 @@ package com.example.vitality.controllers;
 
 import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.HealthObjectiveDTO;
-import com.example.vitality.dtos.ObjectiveBySuscribeUsersDTO;
 import com.example.vitality.dtos.ObjectiveByUsersDTO;
 import com.example.vitality.dtos.RecommendationByUserDTO;
 import com.example.vitality.entities.Answer;

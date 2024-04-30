@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER') OR hasAuthority('PROFESIONAL')")
     public List<ProductDTO> listar(){
         return pS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();

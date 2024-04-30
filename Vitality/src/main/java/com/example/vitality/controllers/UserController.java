@@ -150,4 +150,20 @@ public class UserController {
         }
         return dtoLista;
     }
+
+    //MIO
+    @GetMapping("/Totalproductoscompradosportipo")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<UserBySumProductsByTypeDTO> sumaproductosportipo(@RequestParam String Type) {
+
+        List<String[]> filaLista = uS.findUsersSumProductsByType(Type);
+        List<UserBySumProductsByTypeDTO> dtoLista=new ArrayList<>();
+        for(String[] columna:filaLista){
+            UserBySumProductsByTypeDTO dto=new UserBySumProductsByTypeDTO();
+            dto.setUsername(columna[0]);
+            dto.setSumProdByType(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return  dtoLista;
+    }
 }

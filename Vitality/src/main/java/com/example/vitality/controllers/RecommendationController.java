@@ -29,7 +29,7 @@ public class RecommendationController {
 
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER') OR hasAuthority('PROFESIONAL')")
     public List<RecommendationDTO> listar(){
         return rS.list().stream().map(y-> {
             ModelMapper m = new ModelMapper();
@@ -39,11 +39,11 @@ public class RecommendationController {
 
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('PROFESIONAL')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')")
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')")
     public RecommendationDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();

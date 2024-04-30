@@ -16,6 +16,6 @@ public interface ICategoryService {
 
     public Category listId(int id);
 
-    List<Object[]> findIncomesByMonthAndCategory();
+    List<Object[]> findTotalIncomes();
 
 }

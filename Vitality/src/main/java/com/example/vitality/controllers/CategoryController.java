@@ -60,9 +60,9 @@ public class CategoryController {
         CategoryDTO dto = m.map(cS.listId(id), CategoryDTO.class);
         return dto;
     }
-    @GetMapping("/Ingresos_por_mes_y_categoria")
+    @GetMapping("/Ingresos_totales")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<Object[]> getIncomesByMonthAndCategory() {
-        return cS.findIncomesByMonthAndCategory();
+        return cS.findTotalIncomes();
     }
 }

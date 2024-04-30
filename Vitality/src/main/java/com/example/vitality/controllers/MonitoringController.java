@@ -17,7 +17,7 @@ public class MonitoringController {
     private IMonitoringService mR;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')")
     public void insertar(@RequestBody MonitoringDTO monitoringDTO) {
         ModelMapper d = new ModelMapper();
         Monitoring monitoring = d.map(monitoringDTO, Monitoring.class);

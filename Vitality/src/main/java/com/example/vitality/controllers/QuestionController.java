@@ -39,7 +39,7 @@ public class QuestionController {
         qS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER') OR hasAuthority('ADMIN')")
     public QuestionDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();

@@ -24,7 +24,7 @@ public class ShoppingController {
         Shopping shopping = d.map(shoppingDTO, Shopping.class);
 
     }
-    @PutMapping@PreAuthorize("hasAuthority('USER')")
+    @PutMapping@PreAuthorize("hasAuthority('USER') OR hasAuthority('ADMIN')")
     public void modificar(@RequestBody ShoppingDTO shoppingDTO){
         ModelMapper d= new ModelMapper();
         Shopping shopping=d.map(shoppingDTO, Shopping.class);
@@ -42,13 +42,13 @@ public class ShoppingController {
 
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER') OR hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
         sS.delete(id);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ShoppingDTO listarId(@PathVariable("id") Integer id){
 
             ModelMapper m = new ModelMapper();

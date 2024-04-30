@@ -38,6 +38,7 @@ public class CategoryController {
 
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER') OR hasAuthority('PROFESIONAL')")
     public List<CategoryDTO> listar(){
         return cS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -60,6 +61,7 @@ public class CategoryController {
         CategoryDTO dto = m.map(cS.listId(id), CategoryDTO.class);
         return dto;
     }
+
     @GetMapping("/Ingresos_totales")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<Object[]> getIncomesByMonthAndCategory() {

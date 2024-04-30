@@ -52,7 +52,7 @@ public class RecommendationController {
 
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('PROFESIONAL')")
+    @PreAuthorize("hasAuthority('PROFESIONAL') OR hasAuthority('ADMIN')")
     public void modificar(@RequestBody RecommendationDTO recommendationDTO){
         ModelMapper d= new ModelMapper();
         Recommendation recommendation=d.map(recommendationDTO,Recommendation.class);

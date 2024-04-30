@@ -26,7 +26,7 @@ public class HealthObjectiveController {
         hS.insert(healthObjective);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('PROFESIONAL')")
+    @PreAuthorize("hasAuthority('PROFESIONAL') OR hasAuthority('ADMIN')")
     public List<HealthObjectiveDTO> listar(){
         return hS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -34,13 +34,13 @@ public class HealthObjectiveController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER') OR hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") Integer id){
 
         hS.delete(id);
     }
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER') OR hasAuthority('PROFESIONAL') OR hasAuthority('ADMIN')")
     public HealthObjectiveDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();
@@ -58,7 +58,7 @@ public class HealthObjectiveController {
     }
 
     @GetMapping("/Mostrar_Objetivo_Usuario")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('PROFESIONAL')")
     public List<ObjectiveByUsersDTO> getIncomesByMonthAndCategory(){
         List<String[]> filaLista = hS.findHealthObjectivesByUser();
         List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();

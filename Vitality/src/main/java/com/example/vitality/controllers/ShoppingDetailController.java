@@ -21,7 +21,7 @@ public class ShoppingDetailController {
         @Autowired
         private IShoppingDetailService sS;
         @PostMapping
-        @PreAuthorize("hasAuthority('ADMIN')")
+        @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
         public void insertar(@RequestBody ShoppingDetailDTO shoppingDetailDTO){
             ModelMapper d= new ModelMapper();
             ShoppingDetail shoppingDetail=d.map(shoppingDetailDTO, ShoppingDetail.class);
@@ -29,7 +29,7 @@ public class ShoppingDetailController {
         }
 
         @PutMapping
-        @PreAuthorize("hasAuthority('ADMIN')")
+        @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
         public void modificar(@RequestBody ShoppingDetailDTO shoppingDetailDTO){
             ModelMapper d= new ModelMapper();
             ShoppingDetail shoppingDetail=d.map(shoppingDetailDTO, ShoppingDetail.class);
@@ -47,7 +47,7 @@ public class ShoppingDetailController {
         }
 
         @DeleteMapping("/{id}")
-        @PreAuthorize("hasAuthority('ADMIN')")
+        @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
         public void eliminar(@PathVariable("id") Integer id){
             sS.delete(id);
         }

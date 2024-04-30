@@ -24,6 +24,7 @@ public class AnswerController {
         aS.insert(answer);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<AnswerDTO> listar(){
         return aS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();

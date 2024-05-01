@@ -59,7 +59,7 @@ public class RecommendationController {
         rS.insert(recommendation);
     }
 
-    @GetMapping("/cantidades por Usuario")
+    @GetMapping("/cantidadesporUsuario")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){
         List<String[]> filaLista = rS.quantityRecommendationByMovie();

@@ -8,9 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ICategoryRepository extends JpaRepository<Category,Integer> {
-    @Query(value = "SELECT EXTRACT(MONTH FROM TO_DATE(s.dateShopping::text, 'YYYYMMDD')) AS mes, " +
-            "SUM(s.totalShopping) AS ingresos " +
-            "FROM Shopping s " +
-            "GROUP BY EXTRACT(MONTH FROM TO_DATE(s.dateShopping::text, 'YYYYMMDD'))", nativeQuery = true)
-    List<Object[]> findTotalIncomes();
+    @Query(value = "SELECT 'Cantidad total en compras a la fecha: ' || SUM(total_shopping) AS Total_shopping\n" +
+            "FROM Shopping;",
+            nativeQuery = true)
+    List<String> findTotalShoppingAmountToDate();
 }

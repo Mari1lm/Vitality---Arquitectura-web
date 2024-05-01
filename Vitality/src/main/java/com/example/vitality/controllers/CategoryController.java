@@ -62,9 +62,9 @@ public class CategoryController {
         return dto;
     }
 
-    @GetMapping("/Ingresos_totales")
+    @GetMapping("/compras_totales")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public List<Object[]> getIncomesByMonthAndCategory() {
-        return cS.findTotalIncomes();
+    public List<String> findTotalShoppingAmountToDate() {
+        return cS.findTotalShoppingAmountToDate();
     }
 }

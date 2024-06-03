@@ -2,7 +2,7 @@
 package com.example.vitality.controllers;
 import com.example.vitality.dtos.UserBySumProductsByTypeDTO;
 import com.example.vitality.dtos.UserDTO;
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ public class UserController {
     @PostMapping
     public void insertar(@RequestBody UserDTO userDTO){
         ModelMapper d= new ModelMapper();
-        User user=d.map(userDTO,User.class);
+        Users user=d.map(userDTO,Users.class);
         uS.insert(user);
     }
 
     @PutMapping("/modificar")
     public void modificar(@RequestBody UserDTO userDTO){
         ModelMapper d= new ModelMapper();
-        User user=d.map(userDTO,User.class);
+        Users user=d.map(userDTO,Users.class);
         uS.insert(user);
     }
 
@@ -58,33 +58,6 @@ public class UserController {
     @GetMapping("/finda")
     public List<UserDTO> buscar(@RequestParam Float peso){
         return uS.findByWeight(peso).stream().map(y->{
-            ModelMapper m=new ModelMapper();
-            return m.map(y,UserDTO.class);
-        }).collect(Collectors.toList());
-
-    }
-
-
-    @GetMapping("/findb")
-    public List<UserDTO> buscar(@RequestParam String suscripcion) {
-        return uS.findBySubscription(suscripcion).stream().map(y -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(y, UserDTO.class);
-        }).collect(Collectors.toList());
-    }
-
-    @GetMapping("/findbysuscription")
-    public List<UserDTO> buscarporsuscripcion(@RequestParam String suscripcion){
-        return uS.findBySubscription(suscripcion).stream().map(y->{
-            ModelMapper m=new ModelMapper();
-            return m.map(y,UserDTO.class);
-        }).collect(Collectors.toList());
-
-    }
-
-    @GetMapping("/findbyprofessional")
-    public List<UserDTO> buscarporprofesional(@RequestParam String profesional){
-        return uS.findByHealthProfessional(profesional).stream().map(y->{
             ModelMapper m=new ModelMapper();
             return m.map(y,UserDTO.class);
         }).collect(Collectors.toList());

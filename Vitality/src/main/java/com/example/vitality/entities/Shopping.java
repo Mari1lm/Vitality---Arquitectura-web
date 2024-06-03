@@ -14,13 +14,13 @@ public class Shopping {
     private int totalShopping;
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private Users user;
 
     public Shopping() {
 
     }
 
-    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, User user) {
+    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, Users user) {
         this.numOrderShopping = numOrderShopping;
         this.dateShopping = dateShopping;
         this.totalShopping = totalShopping;
@@ -51,11 +51,11 @@ public class Shopping {
         this.totalShopping = totalShopping;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

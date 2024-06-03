@@ -1,19 +1,19 @@
 package com.example.vitality.dtos;
 
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 
 public class RecommendationDTO {
     private int idRecommendation;
 
     private String descriptionRecommendation;
 
-    public User user;
+    public Users user;
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

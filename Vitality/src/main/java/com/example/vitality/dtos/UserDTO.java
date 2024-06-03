@@ -9,19 +9,17 @@ import jakarta.persistence.ManyToOne;
 public class UserDTO {
 
     private int idUser;
-    private String nameUser;
+    private String username;
     private String email;
     private String password;
 
     private String address;
     private Float weight;
     private int height;
-    private String subscription;
-    private String healthProfessional;
+    private Boolean subscription;
+    private Boolean healthProfessional;
 
     private Role role;
-
-    private Specialty specialty;
 
 
     public int getIdUser() {
@@ -32,12 +30,12 @@ public class UserDTO {
         this.idUser = idUser;
     }
 
-    public String getNameUser() {
-        return nameUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -80,19 +78,19 @@ public class UserDTO {
         this.height = height;
     }
 
-    public String getSubscription() {
+    public Boolean getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(String subscription) {
+    public void setSubscription(Boolean subscription) {
         this.subscription = subscription;
     }
 
-    public String getHealthProfessional() {
+    public Boolean getHealthProfessional() {
         return healthProfessional;
     }
 
-    public void setHealthProfessional(String healthProfessional) {
+    public void setHealthProfessional(Boolean healthProfessional) {
         this.healthProfessional = healthProfessional;
     }
 
@@ -103,4 +101,5 @@ public class UserDTO {
     public void setRole(Role role) {
         this.role = role;
     }
+
 }

@@ -15,12 +15,12 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private Users user;
 
     public Review() {
     }
 
-    public Review(int idReview, int punctuation, String comment, User user) {
+    public Review(int idReview, int punctuation, String comment, Users user) {
         this.idReview = idReview;
         this.punctuation = punctuation;
         this.comment = comment;
@@ -51,11 +51,11 @@ public class Review {
         this.comment = comment;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 }

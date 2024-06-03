@@ -1,6 +1,7 @@
 package com.example.vitality.entities;
 
 import jakarta.persistence.*;
+import org.apache.catalina.User;
 
 @Entity
 @Table(name="Answer")
@@ -13,7 +14,7 @@ public class Answer {
     private String solution;
     @ManyToOne
     @JoinColumn(name="userId")
-    private User user;
+    private Users user;
 
 
 
@@ -21,7 +22,7 @@ public class Answer {
     }
 
 
-    public Answer(int idAnswer, String solution, User user) {
+    public Answer(int idAnswer, String solution, Users user) {
         this.idAnswer = idAnswer;
         this.solution = solution;
         this.user = user;
@@ -44,11 +45,11 @@ public class Answer {
         this.solution = solution;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

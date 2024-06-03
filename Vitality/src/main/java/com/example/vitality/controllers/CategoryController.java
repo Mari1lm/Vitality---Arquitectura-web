@@ -4,7 +4,7 @@ import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.CategoryDTO;
 import com.example.vitality.dtos.UserDTO;
 import com.example.vitality.entities.Category;
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

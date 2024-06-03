@@ -1,13 +1,13 @@
 package com.example.vitality.dtos;
 
 import com.example.vitality.entities.Product;
-import com.example.vitality.entities.User;
+import com.example.vitality.entities.Users;
 
 public class ShoppingDTO {
     private int numOrderShopping;
     private int dateShopping;
     private int totalShopping;
-    private User user;
+    private Users user;
     private Product product;
 
     public int getNumOrderShopping() {
@@ -34,11 +34,11 @@ public class ShoppingDTO {
         this.totalShopping = totalShopping;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

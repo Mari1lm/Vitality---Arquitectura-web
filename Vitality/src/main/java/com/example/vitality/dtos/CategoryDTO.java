@@ -1,6 +1,5 @@
 package com.example.vitality.dtos;
 
-import com.example.vitality.entities.User;
 
 public class CategoryDTO {
     public int idCategory;

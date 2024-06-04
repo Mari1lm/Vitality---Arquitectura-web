@@ -1,8 +1,7 @@
 package com.example.vitality.dtos;
 
 
-import jdk.jfr.Category;
-
+import com.example.vitality.entities.Category;
 
 public class ProductDTO {
     private int idProduct;
@@ -56,5 +55,5 @@ public class ProductDTO {
 
     }
 
-    }
+}
 

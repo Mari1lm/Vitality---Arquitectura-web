@@ -6,6 +6,7 @@ import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.HealthObjective;
 import com.example.vitality.servicesinterfaces.IHealthObjectiveService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/Objetivo-de-salud")
 public class HealthObjectiveController {
+    @Autowired
     private IHealthObjectiveService hS;
     @PostMapping
     public void insertar(@RequestBody HealthObjectiveDTO healthObjectiveDTO){

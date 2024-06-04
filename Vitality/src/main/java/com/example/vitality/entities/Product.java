@@ -28,6 +28,7 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.category = category;
+
     }
 
     public int getIdProduct() {

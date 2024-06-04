@@ -6,6 +6,7 @@ import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.Specialty;
 import com.example.vitality.servicesinterfaces.IAnswerService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/Respuesta")
 public class AnswerController {
+    @Autowired
     private IAnswerService aS;
     @PostMapping
     public void insertar(@RequestBody AnswerDTO answerDTO){

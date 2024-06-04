@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Role")
 public class Role {
-    private static final long serialVersionUID = 1L;
 
+    //borrar serializable y implements en user
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRole;
@@ -15,7 +15,7 @@ public class Role {
     private String rol;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private Users user;
 
     public Role() {

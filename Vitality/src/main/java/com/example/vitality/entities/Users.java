@@ -6,21 +6,20 @@ import java.util.List;
 
 @Entity
     @Table(name="Users")
-    public class Users implements Serializable {
+    public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
-    @Column(length = 30, unique = true)
+    @Column(length = 30)
     private String username;
     @Column(name = "email",nullable = false,length = 100)
     private String email;
     @Column(length = 200)
     private String password;
 
+    //ROLES BORRADO
     private Boolean enabled;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private List<Role> roles;
+
     @Column(name = "address",nullable = false,length = 100)
 
     private String address;
@@ -36,13 +35,12 @@ import java.util.List;
     public Users() {
     }
 
-    public Users(int idUser, String username, String email, String password, Boolean enabled, List<Role> roles, String address, Float weight, int height, Boolean subscription, Boolean healthProfessional) {
+    public Users(int idUser, String username, String email, String password, Boolean enabled, String address, Float weight, int height, Boolean subscription, Boolean healthProfessional) {
         this.idUser = idUser;
         this.username = username;
         this.email = email;
         this.password = password;
         this.enabled = enabled;
-        this.roles = roles;
         this.address = address;
         this.weight = weight;
         this.height = height;
@@ -90,13 +88,6 @@ import java.util.List;
         this.enabled = enabled;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 
     public String getAddress() {
         return address;

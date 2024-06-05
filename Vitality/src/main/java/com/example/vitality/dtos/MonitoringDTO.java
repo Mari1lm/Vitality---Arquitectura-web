@@ -2,10 +2,12 @@ package com.example.vitality.dtos;
 
 import com.example.vitality.entities.HealthObjective;
 
+import java.time.LocalDate;
+
 public class MonitoringDTO {
     private int idMonitoring;
-    private int starDateMonitoring;
-    private int endDateMonitoring;
+    private LocalDate starDateMonitoring;
+    private LocalDate endDateMonitoring;
     private String statusMonitoring;
     private String historyMonitoring;
     private String nutritionalPlanMonitoring;
@@ -27,19 +29,19 @@ public class MonitoringDTO {
         this.idMonitoring = idMonitoring;
     }
 
-    public int getStarDateMonitoring() {
+    public LocalDate getStarDateMonitoring() {
         return starDateMonitoring;
     }
 
-    public void setStarDateMonitoring(int starDateMonitoring) {
+    public void setStarDateMonitoring(LocalDate starDateMonitoring) {
         this.starDateMonitoring = starDateMonitoring;
     }
 
-    public int getEndDateMonitoring() {
+    public LocalDate getEndDateMonitoring() {
         return endDateMonitoring;
     }
 
-    public void setEndDateMonitoring(int endDateMonitoring) {
+    public void setEndDateMonitoring(LocalDate endDateMonitoring) {
         this.endDateMonitoring = endDateMonitoring;
     }
 

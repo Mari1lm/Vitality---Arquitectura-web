@@ -13,7 +13,7 @@ public class Answer {
     @Column( name = "answer", nullable = false, length = 100)
     private String solution;
     @ManyToOne
-    @JoinColumn(name="userId")
+    @JoinColumn(name="idUser")
     private Users user;
 
 

@@ -14,7 +14,7 @@ public class Review {
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "idUser")
     private Users user;
 
     public Review() {

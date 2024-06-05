@@ -3,26 +3,27 @@ package com.example.vitality.dtos;
 import com.example.vitality.entities.Product;
 import com.example.vitality.entities.Users;
 
+import java.time.LocalDate;
+
 public class ShoppingDTO {
-    private int numOrderShopping;
-    private int dateShopping;
+    private int idShopping;
+    private LocalDate dateShopping;
     private int totalShopping;
     private Users user;
-    private Product product;
 
-    public int getNumOrderShopping() {
-        return numOrderShopping;
+    public int getIdShopping() {
+        return idShopping;
     }
 
-    public void setNumOrderShopping(int numOrderShopping) {
-        this.numOrderShopping = numOrderShopping;
+    public void setIdShopping(int idShopping) {
+        this.idShopping = idShopping;
     }
 
-    public int getDateShopping() {
+    public LocalDate getDateShopping() {
         return dateShopping;
     }
 
-    public void setDateShopping(int dateShopping) {
+    public void setDateShopping(LocalDate dateShopping) {
         this.dateShopping = dateShopping;
     }
 
@@ -42,11 +43,4 @@ public class ShoppingDTO {
         this.user = user;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

@@ -2,44 +2,46 @@ package com.example.vitality.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "Shopping")
 public class Shopping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numOrderShopping;
+    private int idShopping;
     @Column(name = "dateShopping",nullable = false)
-    private int dateShopping;
+    private LocalDate dateShopping;
     @Column(name = "totalShopping",nullable = false)
     private int totalShopping;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "idUser")
     private Users user;
 
     public Shopping() {
 
     }
 
-    public Shopping(int numOrderShopping, int dateShopping, int totalShopping, Users user) {
-        this.numOrderShopping = numOrderShopping;
+    public Shopping(int idShopping, LocalDate dateShopping, int totalShopping, Users user) {
+        this.idShopping = idShopping;
         this.dateShopping = dateShopping;
         this.totalShopping = totalShopping;
         this.user = user;
     }
 
-    public int getNumOrderShopping() {
-        return numOrderShopping;
+    public int getIdShopping() {
+        return idShopping;
     }
 
-    public void setNumOrderShopping(int numOrderShopping) {
-        this.numOrderShopping = numOrderShopping;
+    public void setIdShopping(int idShopping) {
+        this.idShopping = idShopping;
     }
 
-    public int getDateShopping() {
+    public LocalDate getDateShopping() {
         return dateShopping;
     }
 
-    public void setDateShopping(int dateShopping) {
+    public void setDateShopping(LocalDate dateShopping) {
         this.dateShopping = dateShopping;
     }
 

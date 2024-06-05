@@ -11,7 +11,7 @@ public class HealthObjective {
     private String typeObjective;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "idUser")
     private Users user;
 
 

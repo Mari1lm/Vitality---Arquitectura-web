@@ -1,6 +1,9 @@
 package com.example.vitality.entities;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "Monitoring")
 public class Monitoring {
@@ -8,9 +11,9 @@ public class Monitoring {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMonitoring;
     @Column(name = "starDateMonitoring",nullable = false)
-    private int starDateMonitoring;
+    private LocalDate starDateMonitoring;
     @Column(name = "endDateMonitoring",nullable = false)
-    private int endDateMonitoring;
+    private LocalDate endDateMonitoring;
     @Column(name = "statusMonitoring",nullable = false,length = 100)
     private String statusMonitoring;
     @Column(name = "historyMonitoring",nullable = false,length = 300)
@@ -25,7 +28,7 @@ public class Monitoring {
     public Monitoring() {
     }
 
-    public Monitoring(int idMonitoring, int starDateMonitoring, int endDateMonitoring, String statusMonitoring, String historyMonitoring, String nutritionalPlanMonitoring, HealthObjective healthObjective) {
+    public Monitoring(int idMonitoring, LocalDate starDateMonitoring, LocalDate endDateMonitoring, String statusMonitoring, String historyMonitoring, String nutritionalPlanMonitoring, HealthObjective healthObjective) {
         this.idMonitoring = idMonitoring;
         this.starDateMonitoring = starDateMonitoring;
         this.endDateMonitoring = endDateMonitoring;
@@ -43,19 +46,19 @@ public class Monitoring {
         this.idMonitoring = idMonitoring;
     }
 
-    public int getStarDateMonitoring() {
+    public LocalDate getStarDateMonitoring() {
         return starDateMonitoring;
     }
 
-    public void setStarDateMonitoring(int starDateMonitoring) {
+    public void setStarDateMonitoring(LocalDate starDateMonitoring) {
         this.starDateMonitoring = starDateMonitoring;
     }
 
-    public int getEndDateMonitoring() {
+    public LocalDate getEndDateMonitoring() {
         return endDateMonitoring;
     }
 
-    public void setEndDateMonitoring(int endDateMonitoring) {
+    public void setEndDateMonitoring(LocalDate endDateMonitoring) {
         this.endDateMonitoring = endDateMonitoring;
     }
 

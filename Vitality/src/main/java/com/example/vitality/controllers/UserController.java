@@ -24,7 +24,7 @@ public class UserController {
         uS.insert(user);
     }
 
-    @PutMapping("/modificar")
+    @PutMapping
     public void modificar(@RequestBody UserDTO userDTO){
         ModelMapper d= new ModelMapper();
         Users user=d.map(userDTO,Users.class);
@@ -32,7 +32,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/listar-usuarios")
+    @GetMapping
     public List<UserDTO> listar(){
         return uS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -46,7 +46,7 @@ public class UserController {
         uS.delete(id);
     }
 
-    @GetMapping("/{id} listar")
+    @GetMapping("/{id}")
     public UserDTO listarId(@PathVariable("id") Integer id){
 
         ModelMapper m= new ModelMapper();

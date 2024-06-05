@@ -17,9 +17,7 @@ import java.util.List;
     @Column(length = 200)
     private String password;
 
-    //ROLES BORRADO
-    private Boolean enabled;
-
+    //ROLES BORRADO y enables borrado
     @Column(name = "address",nullable = false,length = 100)
 
     private String address;
@@ -35,12 +33,11 @@ import java.util.List;
     public Users() {
     }
 
-    public Users(int idUser, String username, String email, String password, Boolean enabled, String address, Float weight, int height, Boolean subscription, Boolean healthProfessional) {
+    public Users(int idUser, String username, String email, String password, String address, Float weight, int height, Boolean subscription, Boolean healthProfessional) {
         this.idUser = idUser;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.enabled = enabled;
         this.address = address;
         this.weight = weight;
         this.height = height;
@@ -80,14 +77,6 @@ import java.util.List;
         this.password = password;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
 
     public String getAddress() {
         return address;
@@ -113,7 +102,7 @@ import java.util.List;
         this.height = height;
     }
 
-    public Boolean isSubscription() {
+    public boolean isSubscription() {
         return subscription;
     }
 
@@ -121,7 +110,7 @@ import java.util.List;
         this.subscription = subscription;
     }
 
-    public Boolean isHealthProfessional() {
+    public boolean isHealthProfessional() {
         return healthProfessional;
     }
 

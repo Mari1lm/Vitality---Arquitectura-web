@@ -12,14 +12,12 @@ public class UserDTO {
     private String username;
     private String email;
     private String password;
-
     private String address;
     private Float weight;
     private int height;
     private Boolean subscription;
     private Boolean healthProfessional;
 
-    private Role role;
 
 
     public int getIdUser() {
@@ -94,12 +92,5 @@ public class UserDTO {
         this.healthProfessional = healthProfessional;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
 }

@@ -18,8 +18,6 @@ public class UserDTO {
     private Boolean subscription;
     private Boolean healthProfessional;
 
-
-
     public int getIdUser() {
         return idUser;
     }
@@ -91,6 +89,4 @@ public class UserDTO {
     public void setHealthProfessional(Boolean healthProfessional) {
         this.healthProfessional = healthProfessional;
     }
-
-
 }

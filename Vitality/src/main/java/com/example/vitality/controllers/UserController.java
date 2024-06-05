@@ -1,7 +1,7 @@
 
 package com.example.vitality.controllers;
-import com.example.vitality.dtos.UserBySumProductsByTypeDTO;
 import com.example.vitality.dtos.UserDTO;
+import com.example.vitality.dtos.UserBySumProductsByTypeDTO;
 import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.modelmapper.ModelMapper;
@@ -20,15 +20,15 @@ public class UserController {
     @PostMapping
     public void insertar(@RequestBody UserDTO userDTO){
         ModelMapper d= new ModelMapper();
-        Users user=d.map(userDTO,Users.class);
-        uS.insert(user);
+        Users category=d.map(userDTO, Users.class);
+        uS.insert(category);
     }
 
     @PutMapping
     public void modificar(@RequestBody UserDTO userDTO){
         ModelMapper d= new ModelMapper();
-        Users user=d.map(userDTO,Users.class);
-        uS.insert(user);
+        Users category=d.map(userDTO, Users.class);
+        uS.insert(category);
     }
 
 
@@ -40,11 +40,11 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         uS.delete(id);
     }
+
 
     @GetMapping("/{id}")
     public UserDTO listarId(@PathVariable("id") Integer id){

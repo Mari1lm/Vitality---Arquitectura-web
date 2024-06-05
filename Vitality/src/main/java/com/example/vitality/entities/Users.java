@@ -1,20 +1,18 @@
 package com.example.vitality.entities;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-import java.util.List;
 
 @Entity
-    @Table(name="Users")
-    public class Users {
+@Table(name="Users")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
-    @Column(length = 30)
+    @Column(name = "username",length = 30)
     private String username;
     @Column(name = "email",nullable = false,length = 100)
     private String email;
-    @Column(length = 200)
+    @Column(name="password",length = 200)
     private String password;
 
     //ROLES BORRADO y enables borrado
@@ -33,6 +31,7 @@ import java.util.List;
     public Users() {
     }
 
+
     public Users(int idUser, String username, String email, String password, String address, Float weight, int height, Boolean subscription, Boolean healthProfessional) {
         this.idUser = idUser;
         this.username = username;
@@ -45,12 +44,13 @@ import java.util.List;
         this.healthProfessional = healthProfessional;
     }
 
-    public int getIdUsers() {
+
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUsers(int idUsers) {
-        this.idUser = idUsers;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getUsername() {
@@ -77,7 +77,6 @@ import java.util.List;
         this.password = password;
     }
 
-
     public String getAddress() {
         return address;
     }
@@ -102,7 +101,7 @@ import java.util.List;
         this.height = height;
     }
 
-    public boolean isSubscription() {
+    public Boolean getSubscription() {
         return subscription;
     }
 
@@ -110,7 +109,7 @@ import java.util.List;
         this.subscription = subscription;
     }
 
-    public boolean isHealthProfessional() {
+    public Boolean getHealthProfessional() {
         return healthProfessional;
     }
 

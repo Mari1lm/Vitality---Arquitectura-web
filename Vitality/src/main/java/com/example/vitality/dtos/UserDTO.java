@@ -15,8 +15,8 @@ public class UserDTO {
     private String address;
     private Float weight;
     private int height;
-    private Boolean subscription;
-    private Boolean healthProfessional;
+    private boolean subscription;
+    private boolean healthProfessional;
 
     public int getIdUser() {
         return idUser;
@@ -74,19 +74,19 @@ public class UserDTO {
         this.height = height;
     }
 
-    public Boolean getSubscription() {
+    public boolean getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(Boolean subscription) {
+    public void setSubscription(boolean subscription) {
         this.subscription = subscription;
     }
 
-    public Boolean getHealthProfessional() {
+    public boolean getHealthProfessional() {
         return healthProfessional;
     }
 
-    public void setHealthProfessional(Boolean healthProfessional) {
+    public void setHealthProfessional(boolean healthProfessional) {
         this.healthProfessional = healthProfessional;
     }
 }

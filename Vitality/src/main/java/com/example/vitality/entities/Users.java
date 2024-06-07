@@ -24,15 +24,15 @@ public class Users {
     @Column(name = "height",nullable = false)
     private int height;
     @Column(name = "subscription",nullable = false,length = 10)
-    private Boolean subscription;
+    private boolean subscription;
     @Column(name = "healthProfessional",nullable = false,length = 10)
-    private Boolean healthProfessional;
+    private boolean healthProfessional;
 
     public Users() {
     }
 
 
-    public Users(int idUser, String username, String email, String password, String address, Float weight, int height, Boolean subscription, Boolean healthProfessional) {
+    public Users(int idUser, String username, String email, String password, String address, Float weight, int height, boolean subscription, boolean healthProfessional) {
         this.idUser = idUser;
         this.username = username;
         this.email = email;
@@ -101,19 +101,19 @@ public class Users {
         this.height = height;
     }
 
-    public Boolean getSubscription() {
+    public boolean getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(Boolean subscription) {
+    public void setSubscription(boolean subscription) {
         this.subscription = subscription;
     }
 
-    public Boolean getHealthProfessional() {
+    public boolean getHealthProfessional() {
         return healthProfessional;
     }
 
-    public void setHealthProfessional(Boolean healthProfessional) {
+    public void setHealthProfessional(boolean healthProfessional) {
         this.healthProfessional = healthProfessional;
     }
 }

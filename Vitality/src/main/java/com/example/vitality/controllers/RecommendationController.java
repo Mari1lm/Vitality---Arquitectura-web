@@ -34,6 +34,7 @@ public class RecommendationController {
         }).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id){rS.delete(id);}
 
     @GetMapping("/{id}")

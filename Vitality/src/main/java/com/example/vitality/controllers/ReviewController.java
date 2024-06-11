@@ -7,6 +7,7 @@ import com.example.vitality.entities.Review;
 import com.example.vitality.servicesinterfaces.IReviewService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ReviewController {
     private IReviewService rS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar(@RequestBody ReviewDTO reviewDTO){
         ModelMapper d= new ModelMapper();
         Review review=d.map(reviewDTO,Review.class);

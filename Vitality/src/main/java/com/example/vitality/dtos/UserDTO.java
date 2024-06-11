@@ -12,6 +12,8 @@ public class UserDTO {
     private String username;
     private String email;
     private String password;
+
+    private Boolean enabled;
     private String address;
     private Float weight;
     private int height;
@@ -88,5 +90,13 @@ public class UserDTO {
 
     public void setHealthProfessional(boolean healthProfessional) {
         this.healthProfessional = healthProfessional;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

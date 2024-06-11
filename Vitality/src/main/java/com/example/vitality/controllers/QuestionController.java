@@ -7,6 +7,7 @@ import com.example.vitality.entities.Question;
 import com.example.vitality.servicesinterfaces.IQuestionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class QuestionController {
     @Autowired
     private IQuestionService qS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar (@RequestBody QuestionDTO questionDTO){
         ModelMapper d = new ModelMapper();
         Question question = d.map(questionDTO, Question.class);

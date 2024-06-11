@@ -8,6 +8,7 @@ import com.example.vitality.entities.Recommendation;
 import com.example.vitality.servicesinterfaces.IRecommendationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +21,14 @@ public class RecommendationController {
     private IRecommendationService rS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar(@RequestBody RecommendationDTO recommendationDTO){
         ModelMapper m = new ModelMapper();
         Recommendation r = m.map(recommendationDTO, Recommendation.class);
         rS.insert(r);
 
     }
+
     @GetMapping
     public List<RecommendationDTO> listar(){
         return rS.list().stream().map(y-> {

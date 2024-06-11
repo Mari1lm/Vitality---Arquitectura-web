@@ -6,6 +6,7 @@ import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class UserController {
     private IUserService uS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody UserDTO userDTO){
         ModelMapper d= new ModelMapper();
         Users category=d.map(userDTO, Users.class);

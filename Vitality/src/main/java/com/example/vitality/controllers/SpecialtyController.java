@@ -5,6 +5,7 @@ import com.example.vitality.entities.Specialty;
 import com.example.vitality.servicesinterfaces.ISpecialtyService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class SpecialtyController {
     @Autowired
     private ISpecialtyService sS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody SpecialtyDTO specialtyDTO){
         ModelMapper d= new ModelMapper();
         Specialty specialty=d.map(specialtyDTO,Specialty.class);

@@ -9,6 +9,7 @@ import com.example.vitality.servicesinterfaces.ICategoryService;
 import com.example.vitality.servicesinterfaces.IShoppingDetailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ShoppingDetailController {
         @Autowired
         private IShoppingDetailService sS;
         @PostMapping
+        @PreAuthorize("hasAnyAuthority('ADMIN','PROFESIONAL')")
         public void insertar(@RequestBody ShoppingDetailDTO shoppingDetailDTO){
             ModelMapper d= new ModelMapper();
             ShoppingDetail shoppingDetail=d.map(shoppingDetailDTO, ShoppingDetail.class);

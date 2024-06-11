@@ -7,6 +7,7 @@ import com.example.vitality.entities.Specialty;
 import com.example.vitality.servicesinterfaces.IAnswerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class AnswerController {
     @Autowired
     private IAnswerService aS;
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar(@RequestBody AnswerDTO answerDTO){
         ModelMapper d= new ModelMapper();
         Answer answer=d.map(answerDTO,Answer.class);

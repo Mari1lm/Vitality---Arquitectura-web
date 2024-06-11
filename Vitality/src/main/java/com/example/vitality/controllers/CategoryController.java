@@ -8,6 +8,7 @@ import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +19,8 @@ import java.util.stream.Collectors;
 public class CategoryController {
     @Autowired
     private ICategoryService cS;
-
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody CategoryDTO categoryDTO){
         ModelMapper d= new ModelMapper();
         Category category=d.map(categoryDTO, Category.class);

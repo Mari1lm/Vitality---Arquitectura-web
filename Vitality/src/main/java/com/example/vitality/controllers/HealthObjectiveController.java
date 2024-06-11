@@ -7,6 +7,7 @@ import com.example.vitality.entities.HealthObjective;
 import com.example.vitality.servicesinterfaces.IHealthObjectiveService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class HealthObjectiveController {
     @Autowired
     private IHealthObjectiveService hS;
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('CLIENTE','PROFESIONAL')")
     public void insertar(@RequestBody HealthObjectiveDTO healthObjectiveDTO){
         ModelMapper d= new ModelMapper();
         HealthObjective healthObjective =d.map(healthObjectiveDTO,HealthObjective.class);

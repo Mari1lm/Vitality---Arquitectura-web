@@ -5,6 +5,7 @@ import com.example.vitality.entities.Monitoring;
 import com.example.vitality.servicesinterfaces.IMonitoringService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ public class MonitoringController {
     private IMonitoringService mR;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('PROFESIONAL')")
     public void insertar(@RequestBody MonitoringDTO monitoringDTO) {
         ModelMapper d = new ModelMapper();
         Monitoring monitoring = d.map(monitoringDTO, Monitoring.class);

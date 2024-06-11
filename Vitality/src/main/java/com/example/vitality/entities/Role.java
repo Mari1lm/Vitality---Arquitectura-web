@@ -3,9 +3,10 @@ package com.example.vitality.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Role")
+@Table(name = "Role", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "rol"})})
 public class Role {
 
+    private static final long serialVersionUID = 1L;
     //borrar serializable y implements en user
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +16,7 @@ public class Role {
     private String rol;
 
     @ManyToOne
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
     public Role() {

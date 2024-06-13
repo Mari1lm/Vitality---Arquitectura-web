@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.example.vitality.entities.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ICategoryRepository extends JpaRepository<Category,Integer> {
@@ -13,3 +14,5 @@ public interface ICategoryRepository extends JpaRepository<Category,Integer> {
             nativeQuery = true)
     List<String> findTotalShoppingAmountToDate();
 }
+
+

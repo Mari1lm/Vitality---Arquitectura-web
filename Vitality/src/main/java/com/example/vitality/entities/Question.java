@@ -8,7 +8,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idQuestion;
-    @Column(name = "consulta",nullable = false,length =50)
+    @Column(name = "consulta",nullable = false,length =500)
     private String consulta;
 
     public Question() {

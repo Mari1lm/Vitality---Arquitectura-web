@@ -12,6 +12,15 @@ public class HealthObjectiveDTO {
     private String typeObjective;
     private Users user;
 
+    @Override
+    public String toString() {
+        return "HealthObjectiveDTO{" +
+                "idHealthObjective=" + idHealthObjective +
+                ", typeObjective='" + typeObjective + '\'' +
+                ", user=" + user +
+                '}';
+    }
+
     public int getIdHealthObjective() {
         return idHealthObjective;
     }
@@ -20,13 +29,6 @@ public class HealthObjectiveDTO {
         this.idHealthObjective = idHealthObjective;
     }
 
-    public String getTypeObjective() {
-        return typeObjective;
-    }
-
-    public void setTypeObjective(String typeObjective) {
-        this.typeObjective = typeObjective;
-    }
 
     public Users getUser() {
         return user;
@@ -34,5 +36,13 @@ public class HealthObjectiveDTO {
 
     public void setUser(Users user) {
         this.user = user;
+    }
+
+    public String getTypeObjective() {
+        return typeObjective;
+    }
+
+    public void setTypeObjective(String typeObjective) {
+        this.typeObjective = typeObjective;
     }
 }

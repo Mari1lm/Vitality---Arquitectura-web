@@ -22,7 +22,7 @@ public class HealthObjectiveController {
     @Autowired
     private IHealthObjectiveService hS;
     @PostMapping
-    @PreAuthorize("hasAuthority('USER')OR hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN')")
     public void insertar(@RequestBody HealthObjectiveDTO healthObjectiveDTO){
         ModelMapper d= new ModelMapper();
         HealthObjective healthObjective =d.map(healthObjectiveDTO,HealthObjective.class);

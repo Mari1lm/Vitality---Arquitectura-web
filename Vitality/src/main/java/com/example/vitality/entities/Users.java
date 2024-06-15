@@ -6,36 +6,50 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-    @Table(name="users")
-    public class Users implements Serializable {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int idUser;
-        @Column(length = 30, unique = true)
-        private String username;
-        @Column(name = "email",nullable = false,length = 100)
-        private String email;
-        @Column(length = 200)
-        private String password;
+@Table(name="users")
+public class Users implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idUser;
+    @Column(length = 30, unique = true)
+    private String username;
+    @Column(name = "email",nullable = false,length = 100)
+    private String email;
+    @Column(length = 200)
+    private String password;
 
-        private Boolean enabled;
+    private Boolean enabled;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Role> roles;
+    @Column(name = "address",nullable = false,length = 100)
+    private String address;
+    @Column(name = "weight",nullable = false)
+    private Float weight;
+    @Column(name = "height",nullable = false)
+    private int height;
+    @Column(name = "subscription",nullable = false,length = 10)
+    private String subscription;
+    @Column(name = "healthProfessional",nullable = false,length = 10)
+    private String healthProfessional;
 
-        @JsonIgnore
-        @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        @JoinColumn(name = "user_id")
-        private List<Role> roles;
-        @Column(name = "address",nullable = false,length = 100)
-
-        private String address;
-        @Column(name = "weight",nullable = false)
-        private Float weight;
-        @Column(name = "height",nullable = false)
-        private int height;
-        @Column(name = "subscription",nullable = false,length = 10)
-        private String subscription;
-        @Column(name = "healthProfessional",nullable = false,length = 10)
-        private String healthProfessional;
-
+    @Override
+    public String toString() {
+        return "Users{" +
+                "idUser=" + idUser +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                ", address='" + address + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", subscription='" + subscription + '\'' +
+                ", healthProfessional='" + healthProfessional + '\'' +
+                '}';
+    }
 
     public Users() {
     }

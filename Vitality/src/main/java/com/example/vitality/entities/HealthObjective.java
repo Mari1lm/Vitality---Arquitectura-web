@@ -14,6 +14,14 @@ public class HealthObjective {
     @JoinColumn(name = "userId")
     private Users user;
 
+    @Override
+    public String toString() {
+        return "HealthObjective{" +
+                "idHealthObjective=" + idHealthObjective +
+                ", typeObjective='" + typeObjective + '\'' +
+                ", user=" + user +
+                '}';
+    }
 
     public HealthObjective() {
     }
@@ -47,5 +55,4 @@ public class HealthObjective {
     public void setUser(Users user) {
         this.user = user;
     }
-
 }

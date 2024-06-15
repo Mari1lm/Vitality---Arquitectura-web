@@ -40,11 +40,11 @@ public class HealthObjective {
         this.typeObjective = typeObjective;
     }
 
-    public Users getUsers() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUsers(Users user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

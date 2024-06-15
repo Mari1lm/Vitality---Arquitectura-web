@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 
 public class HealthObjectiveDTO {
     private int idHealthObjective;
-    private String tipoObjetivo;
+    private String typeObjective;
     private Users user;
 
     public int getIdHealthObjective() {
@@ -20,12 +20,12 @@ public class HealthObjectiveDTO {
         this.idHealthObjective = idHealthObjective;
     }
 
-    public String getTipoObjetivo() {
-        return tipoObjetivo;
+    public String getTypeObjective() {
+        return typeObjective;
     }
 
-    public void setTipoObjetivo(String tipoObjetivo) {
-        this.tipoObjetivo = tipoObjetivo;
+    public void setTypeObjective(String typeObjective) {
+        this.typeObjective = typeObjective;
     }
 
     public Users getUser() {
@@ -35,5 +35,4 @@ public class HealthObjectiveDTO {
     public void setUser(Users user) {
         this.user = user;
     }
-
 }

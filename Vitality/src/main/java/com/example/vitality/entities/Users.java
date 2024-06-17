@@ -1,4 +1,5 @@
 package com.example.vitality.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public class Users implements Serializable {
     private String password;
 
     private Boolean enabled;
-
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;

@@ -47,16 +47,16 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Long id){
         uS.delete(id);
     }
 
 
     @GetMapping("/{id}")
-    public UserDTO listarId(@PathVariable("id") Integer id){
+    public UserDTO listarId(@PathVariable("id") Long id){
 
         ModelMapper m= new ModelMapper();
-        UserDTO dto=m.map(uS.listId(id),UserDTO.class);
+        UserDTO dto=m.map(uS.listarId(id),UserDTO.class);
         return dto;
 
     }

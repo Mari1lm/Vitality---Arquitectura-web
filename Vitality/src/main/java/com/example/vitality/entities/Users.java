@@ -1,15 +1,16 @@
 package com.example.vitality.entities;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 
 @Entity
-@Table(name="Users")
-public class Users {
+@Table(name="users")
+public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Long id;
     @Column(length = 30, unique = true)
     private String username;
     @Column(name = "email",nullable = false,length = 100)
@@ -23,7 +24,6 @@ public class Users {
     @JoinColumn(name = "user_id")
     private List<Role> roles;
 
-    //ROLES BORRADO y enables borrado
     @Column(name = "address",nullable = false,length = 100)
 
     private String address;
@@ -40,8 +40,8 @@ public class Users {
     }
 
 
-    public Users(int idUser, String username, String email, String password, String address, Float weight, int height, boolean subscription, boolean healthProfessional) {
-        this.idUser = idUser;
+    public Users(Long id, String username, String email, String password, String address, Float weight, int height, boolean subscription, boolean healthProfessional) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -52,13 +52,12 @@ public class Users {
         this.healthProfessional = healthProfessional;
     }
 
-
-    public int getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -85,6 +84,22 @@ public class Users {
         this.password = password;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -109,7 +124,7 @@ public class Users {
         this.height = height;
     }
 
-    public boolean getSubscription() {
+    public boolean isSubscription() {
         return subscription;
     }
 
@@ -117,27 +132,11 @@ public class Users {
         this.subscription = subscription;
     }
 
-    public boolean getHealthProfessional() {
+    public boolean isHealthProfessional() {
         return healthProfessional;
     }
 
     public void setHealthProfessional(boolean healthProfessional) {
         this.healthProfessional = healthProfessional;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 }

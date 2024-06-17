@@ -20,12 +20,12 @@ public class RoleServiceImplement implements IRoleService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         rR.deleteById(id);
     }
 
     @Override
-    public Role listId(int id) {
+    public Role listId(Long id) {
         return rR.findById(id).orElse(new Role());
     }
 

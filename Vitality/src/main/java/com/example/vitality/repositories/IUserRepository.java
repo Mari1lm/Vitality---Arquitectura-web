@@ -12,9 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Users,Integer> {
+public interface IUserRepository extends JpaRepository<Users,Long> {
 
-    public Users findByUsername(String username);
     @Query(value = "SELECT U.name_user as USUARIO,SUM(SD.quantity_shopping_detail) AS  TOTAL_PRODUCTOS_COMPRADOS\n " +
             "FROM USERS U\n " +
             "INNER JOIN SHOPPING S\n " +
@@ -30,6 +29,7 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
     public List<String[]> finUserSumProductsByType(@Param("Tipo") String Type);
 
     public List<Users> findByWeight (Float peso);
+    public Users findByUsername(String username);
 
     //BUSCAR POR NOMBRE
     @Query("select count(u.username) from Users u where u.username =:username")
@@ -39,7 +39,7 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
     //INSERTAR ROLES
     @Transactional
     @Modifying
-    @Query(value = "insert into Role (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
+    @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
 
 }

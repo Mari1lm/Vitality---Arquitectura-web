@@ -1,24 +1,18 @@
 package com.example.vitality.dtos;
 
 import com.example.vitality.entities.Users;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 public class RoleDTO {
-    private int idRole;
-
+    private Long id;
     private String rol;
-
     private Users user;
 
-    public int getIdRole() {
-        return idRole;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getRol() {

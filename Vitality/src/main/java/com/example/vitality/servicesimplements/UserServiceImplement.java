@@ -15,8 +15,8 @@ public class UserServiceImplement implements IUserService {
     private IUserRepository uR;
 
     @Override
-    public void insert(Users user) {
-        uR.save(user);
+    public void insert(Users usuario) {
+        uR.save(usuario);
     }
 
     @Override
@@ -25,13 +25,13 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public void delete(int id) {
-        uR.deleteById(id);
+    public void delete(Long idUsuario) {
+        uR.deleteById(idUsuario);
     }
 
     @Override
-    public Users listId(int id) {
-        return uR.findById(id).orElse(new Users());
+    public Users listarId(Long idUsuario) {
+        return uR.findById(idUsuario).orElse(new Users());
     }
 
     @Override

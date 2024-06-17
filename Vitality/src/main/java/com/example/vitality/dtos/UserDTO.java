@@ -1,14 +1,8 @@
 package com.example.vitality.dtos;
 
-import com.example.vitality.entities.Role;
-import com.example.vitality.entities.Specialty;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
 public class UserDTO {
 
-    private int idUser;
+    private Long id;
     private String username;
     private String email;
     private String password;
@@ -20,14 +14,13 @@ public class UserDTO {
     private boolean subscription;
     private boolean healthProfessional;
 
-    public int getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
-
     public String getUsername() {
         return username;
     }

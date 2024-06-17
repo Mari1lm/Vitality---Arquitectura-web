@@ -1,18 +1,16 @@
 package com.example.vitality.servicesinterfaces;
 
-import com.example.vitality.entities.Category;
-import com.example.vitality.entities.Question;
 import com.example.vitality.entities.Role;
 
 import java.util.List;
 
 public interface IRoleService {
 
-    public void insert(Role role);
+    public void insert(Role rol);
 
-    public void delete(int id);
+    public void delete(Long id);
 
-    public Role listId(int id);
+    public Role listId(Long id);
 
     public List<Role> list();
 }

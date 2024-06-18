@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Users,Long> {
+public interface IUserRepository extends JpaRepository<Users,Integer> {
 
     public List<Users> findByWeight (Float peso);
     public Users findByUsername(String username);
@@ -25,7 +25,7 @@ public interface IUserRepository extends JpaRepository<Users,Long> {
     @Transactional
     @Modifying
     @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
-    public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
+    public void insRol(@Param("rol") String authority, @Param("user_id") int user_id);
 
     //Diego
     @Query(value = "SELECT U.username as USUARIO,SUM(SD.quantity_shopping_detail) AS  TOTAL_PRODUCTOS_COMPRADOS\n" +

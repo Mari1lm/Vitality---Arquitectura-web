@@ -11,7 +11,7 @@ import java.util.List;
 public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @Column(length = 30, unique = true)
     private String username;
     @Column(name = "email",nullable = false,length = 100)
@@ -41,7 +41,7 @@ public class Users implements Serializable {
     }
 
 
-    public Users(Long id, String username, String email, String password, String address, Float weight, int height, boolean subscription, boolean healthProfessional) {
+    public Users(int id, String username, String email, String password, String address, Float weight, int height, boolean subscription, boolean healthProfessional) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -53,11 +53,11 @@ public class Users implements Serializable {
         this.healthProfessional = healthProfessional;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

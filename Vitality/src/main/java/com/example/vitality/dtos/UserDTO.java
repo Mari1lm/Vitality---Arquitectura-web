@@ -2,7 +2,7 @@ package com.example.vitality.dtos;
 
 public class UserDTO {
 
-    private Long id;
+    private int id;
     private String username;
     private String email;
     private String password;
@@ -14,11 +14,11 @@ public class UserDTO {
     private boolean subscription;
     private boolean healthProfessional;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getUsername() {

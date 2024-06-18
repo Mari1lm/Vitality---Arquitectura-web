@@ -56,12 +56,13 @@ public class RecommendationController {
     }
 
     @GetMapping("/cantidadesporUsuario")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){
         List<String[]> filaLista = rS.quantityRecommendationByMovie();
         List<RecommendationByUserDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filaLista){
             RecommendationByUserDTO dto = new RecommendationByUserDTO();
-            dto.setNameUser(columna[0]);
+            dto.setUsername(columna[0]);
             dto.setQuantityRecommendation(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }

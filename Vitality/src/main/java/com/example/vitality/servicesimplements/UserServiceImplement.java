@@ -25,12 +25,12 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public void delete(Long idUsuario) {
+    public void delete(int idUsuario) {
         uR.deleteById(idUsuario);
     }
 
     @Override
-    public Users listarId(Long idUsuario) {
+    public Users listarId(int idUsuario) {
         return uR.findById(idUsuario).orElse(new Users());
     }
 

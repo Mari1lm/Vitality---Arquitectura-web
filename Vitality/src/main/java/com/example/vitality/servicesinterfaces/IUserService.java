@@ -11,9 +11,9 @@ public interface IUserService {
 
     public List<Users> list();
 
-    public void delete(Long idUsuario);
+    public void delete(int idUsuario);
 
-    public Users listarId(Long idUsuario);
+    public Users listarId(int idUsuario);
 
     public List<Users> findByWeight (Float peso);
 

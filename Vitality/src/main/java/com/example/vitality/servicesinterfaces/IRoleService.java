@@ -8,9 +8,9 @@ public interface IRoleService {
 
     public void insert(Role rol);
 
-    public void delete(Long id);
+    public void delete(int id);
 
-    public Role listId(Long id);
+    public Role listId(int id);
 
     public List<Role> list();
 }

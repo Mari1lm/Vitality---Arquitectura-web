@@ -59,12 +59,8 @@ public class CategoryController {
     }
 
     @GetMapping("/compras_totales")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<String> findTotalShoppingAmountToDate() {
         return cS.findTotalShoppingAmountToDate();
-    }
-
-    @GetMapping("/Ingresos_por_mes_y_categoria")
-    public List<Object[]> getIncomesByMonthAndCategory() {
-        return cS.findIncomesByMonthAndCategory();
     }
 }

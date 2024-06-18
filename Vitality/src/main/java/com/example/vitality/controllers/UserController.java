@@ -86,6 +86,7 @@ public class UserController {
     }
 
     @GetMapping("/resumen_y_promedio_de_reseñas")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<Object[]> getUsersReviewSummary() {
         return uS.findUsersReviewSummary();
     }

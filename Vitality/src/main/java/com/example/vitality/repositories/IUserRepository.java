@@ -58,7 +58,7 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
             "            WHERE MO.status_monitoring = 'Finalizado'  ",nativeQuery = true)
     public List<String[]> findObjetiveStatus ();
 
-    //Mari
+    //MARI
     @Query(value = "SELECT u.username AS nombre_usuario,\n " +
             "            COUNT(r.id_review) AS total_revisiones,\n " +
             "            AVG(r.punctuation) AS promedio_puntuacion \n " +

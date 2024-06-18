@@ -2,6 +2,7 @@ package com.example.vitality.controllers;
 
 import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.CategoryDTO;
+import com.example.vitality.dtos.ProductsByCategoryDTO;
 import com.example.vitality.dtos.UserDTO;
 import com.example.vitality.entities.Category;
 import com.example.vitality.entities.Users;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,5 +64,19 @@ public class CategoryController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<String> findTotalShoppingAmountToDate() {
         return cS.findTotalShoppingAmountToDate();
+    }
+
+    @GetMapping("/Totalproductoscompradosportipo")
+    public List<ProductsByCategoryDTO> sumaproductosportipo() {
+
+        List<String[]> filaLista = cS.ProductsByCategory();
+        List<ProductsByCategoryDTO> dtoLista=new ArrayList<>();
+        for(String[] columna:filaLista){
+            ProductsByCategoryDTO dto=new ProductsByCategoryDTO();
+            dto.setNameCategory(columna[0]);
+            dto.setTotal(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return  dtoLista;
     }
 }

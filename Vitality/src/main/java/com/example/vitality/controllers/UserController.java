@@ -78,8 +78,8 @@ public class UserController {
         List<UserBySumProductsByTypeDTO> dtoLista=new ArrayList<>();
         for(String[] columna:filaLista){
             UserBySumProductsByTypeDTO dto=new UserBySumProductsByTypeDTO();
-            dto.setNameUser(columna[0]);
-            dto.setSumProdByType(Integer.parseInt(columna[1]));
+            dto.setUsername(columna[0]);
+            dto.setSumpProdType(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return  dtoLista;

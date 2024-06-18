@@ -39,4 +39,9 @@ public class CategoryServiceImplement implements ICategoryService {
     public List<String> findTotalShoppingAmountToDate() {
         return cR.findTotalShoppingAmountToDate();
     }
+
+    @Override
+    public List<String[]> ProductsByCategory() {
+        return cR.ProductsByCategory();
+    }
 }

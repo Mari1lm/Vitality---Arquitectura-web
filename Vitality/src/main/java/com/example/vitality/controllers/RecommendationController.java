@@ -55,15 +55,14 @@ public class RecommendationController {
         rS.insert(recommendation);
     }
 
-    @GetMapping("/cantidades por Usuario")
+    @GetMapping("/cantidadesporUsuario")
     public List<RecommendationByUserDTO> cantidadRecomendacionesporUsuario(){
         List<String[]> filaLista = rS.quantityRecommendationByMovie();
         List<RecommendationByUserDTO> dtoLista = new ArrayList<>();
         for(String[] columna:filaLista){
             RecommendationByUserDTO dto = new RecommendationByUserDTO();
-            dto.setIdUser(Integer.parseInt(columna[0]));
-            dto.setNameUser(columna[1]);
-            dto.setQuantityRecommendation(Integer.parseInt(columna[2]));
+            dto.setNameUser(columna[0]);
+            dto.setQuantityRecommendation(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

@@ -44,5 +44,25 @@ public class UserServiceImplement implements IUserService {
         return uR.finUserSumProductsByType(Type);
     }
 
+    @Override
+    public List<String[]> findCountShopping() {
+        return uR.findCountShopping();
+    }
+
+    @Override
+    public List<String[]> findObjetiveStatus() {
+        return uR.findObjetiveStatus();
+    }
+
+    @Override
+    public List<Object[]> findUsersReviewSummary() {
+        return uR.findUsersReviewSummary();
+    }
+
+    @Override
+    public List<String[]> countHealthObjectivesForSubscribedUsers() {
+        return uR.countHealthObjectivesForSubscribedUsers();
+    }
+
 
 }

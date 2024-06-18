@@ -1,7 +1,6 @@
 
 package com.example.vitality.controllers;
-import com.example.vitality.dtos.UserDTO;
-import com.example.vitality.dtos.UserBySumProductsByTypeDTO;
+import com.example.vitality.dtos.*;
 import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.IUserService;
 import org.modelmapper.ModelMapper;
@@ -84,6 +83,54 @@ public class UserController {
             dtoLista.add(dto);
         }
         return  dtoLista;
+    }
+
+    @GetMapping("/resumen_y_promedio_de_reseñas")
+    public List<Object[]> getUsersReviewSummary() {
+        return uS.findUsersReviewSummary();
+    }
+
+    @GetMapping("/Cantidaddecompras")
+    public List<CountShoppingDTO> cantidaddecompras() {
+
+        List<String[]> filaLista = uS.findCountShopping();
+        List<CountShoppingDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            CountShoppingDTO dto = new CountShoppingDTO();
+            dto.setUsername(columna[0]);
+            dto.setCount(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+
+    @GetMapping("/ObjetivosCompletados")
+    public List<StatusObjetiveDTO> objetivoscompletados() {
+
+        List<String[]> filaLista = uS.findObjetiveStatus();
+        List<StatusObjetiveDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            StatusObjetiveDTO dto = new StatusObjetiveDTO();
+            dto.setUsername(columna[0]);
+            dto.setTypeObjetive(columna[1]);
+            dto.setStatus(columna[2]);
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/Usuarios_suscritos")
+    public List<ObjectiveByUsersDTO> getHealthObjectivesForSubscribedUsers() {
+        List<String[]> filaLista = uS.countHealthObjectivesForSubscribedUsers();
+        List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
+            dto.setUsername(columna[0]);
+            dto.setQuantity(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 
 

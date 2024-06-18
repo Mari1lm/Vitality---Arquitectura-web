@@ -33,4 +33,14 @@ public class ReviewServiceImplement implements IReviewService {
     public Review listId(int id) {
         return rR.findById(id).orElse(new Review());
     }
+
+    @Override
+    public List<String[]> sumPunctuations() {
+        return rR.sumPunctuations();
+    }
+
+    @Override
+    public List<String[]> quantityReviewByUser() {
+        return rR.quantityReviewByUser();
+    }
 }

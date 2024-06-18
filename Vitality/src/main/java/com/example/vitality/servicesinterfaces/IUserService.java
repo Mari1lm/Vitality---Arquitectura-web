@@ -18,4 +18,10 @@ public interface IUserService {
     public List<Users> findByWeight (Float peso);
 
     public List<String[]> finUserSumProductsByType(String Type);
+
+    public List<String[]> findCountShopping();
+    public List<String[]> findObjetiveStatus ();
+    public List<Object[]> findUsersReviewSummary();
+
+    List<String[]> countHealthObjectivesForSubscribedUsers();
 }

@@ -57,4 +57,14 @@ public class CategoryController {
         return dto;
 
     }
+
+    @GetMapping("/compras_totales")
+    public List<String> findTotalShoppingAmountToDate() {
+        return cS.findTotalShoppingAmountToDate();
+    }
+
+    @GetMapping("/Ingresos_por_mes_y_categoria")
+    public List<Object[]> getIncomesByMonthAndCategory() {
+        return cS.findIncomesByMonthAndCategory();
+    }
 }

@@ -18,4 +18,19 @@ public interface ICategoryRepository extends JpaRepository<Category,Integer> {
             "ORDER BY year;",
             nativeQuery = true)
     List<String> findTotalShoppingAmountToDate();
+
+
+    //DIEGO (MODIFICADO DE USUARIO)
+    @Query(value = "SELECT CA.type_category AS CATEGORIA, SUM(SD.quantity_shopping_detail) AS TOTAL_PRODUCTOS_COMPRADOS\n " +
+            "FROM CATEGORY CA\n " +
+            "INNER JOIN PRODUCT PR\n " +
+            "ON PR.category_id = CA.id_category\n " +
+            "INNER JOIN SHOPPING_DETAIL SD\n " +
+            "ON SD.id_product = PR.id_product\n " +
+            "INNER JOIN SHOPPING S\n " +
+            "ON SD.id_product = PR.id_product\n " +
+            "INNER JOIN USERS U\n " +
+            "ON U.id = S.id_user\n " +
+            "GROUP BY CA.type_category ",nativeQuery = true)
+    List<String[]> ProductsByCategory();
 }

@@ -5,6 +5,7 @@ public class PunctuationByUserDTO {
     private String username;
 
     private int sumPunctuations;
+    private double averageReview;
 
     public String getUsername() {
         return username;
@@ -20,5 +21,13 @@ public class PunctuationByUserDTO {
 
     public void setSumPunctuations(int sumPunctuations) {
         this.sumPunctuations = sumPunctuations;
+    }
+
+    public double getAverageReview() {
+        return averageReview;
+    }
+
+    public void setAverageReview(double averageReview) {
+        this.averageReview = averageReview;
     }
 }

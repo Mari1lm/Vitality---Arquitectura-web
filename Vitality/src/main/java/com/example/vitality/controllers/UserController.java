@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,8 +73,18 @@ public class UserController {
 
     @GetMapping("/resumen_y_promedio_de_reseñas")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public List<Object[]> getUsersReviewSummary() {
-        return uS.findUsersReviewSummary();
+    public List<PunctuationByUserDTO> getUsersReviewSummary() {
+        List<Object[]> rawList = uS.findUsersReviewSummary();
+        List<PunctuationByUserDTO> dtoList = new ArrayList<>();
+
+        for (Object[] row : rawList) {
+            PunctuationByUserDTO dto = new PunctuationByUserDTO();
+            dto.setUsername((String) row[0]);
+            dto.setSumPunctuations((Integer) row[1]);
+            dto.setAverageReview((Double) row[2]);
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 
     @GetMapping("/Cantidaddecompras")
@@ -82,7 +94,7 @@ public class UserController {
         List<CountShoppingDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filaLista) {
             CountShoppingDTO dto = new CountShoppingDTO();
-            dto.setUsername(columna[0]);
+            dto.setDateShopping(LocalDate.parse((String) columna[0]));
             dto.setCount(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }

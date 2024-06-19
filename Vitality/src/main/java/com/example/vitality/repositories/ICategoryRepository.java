@@ -11,8 +11,12 @@ import java.util.List;
 public interface ICategoryRepository extends JpaRepository<Category,Integer> {
 
     // MARI
-    @Query(value = "SELECT 'Cantidad total en compras a la fecha: ' || SUM(total_shopping) AS Total_shopping\n " +
-            "            FROM Shopping; ",
+    @Query(value = "SELECT EXTRACT(YEAR FROM date_shopping) AS year, " +
+            "COUNT(*) AS total_shoppings " +
+            "FROM Shopping " +
+            "WHERE total_shopping IS NOT NULL " +
+            "GROUP BY EXTRACT(YEAR FROM date_shopping) " +
+            "ORDER BY year;",
             nativeQuery = true)
     List<String> findTotalShoppingAmountToDate();
 

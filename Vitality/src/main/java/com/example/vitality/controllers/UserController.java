@@ -69,22 +69,6 @@ public class UserController {
 
     }
 
-
-
-    @GetMapping("/Totalproductoscompradosportipo")
-    public List<UserBySumProductsByTypeDTO> sumaproductosportipo(@RequestParam String Type) {
-
-        List<String[]> filaLista = uS.finUserSumProductsByType(Type);
-        List<UserBySumProductsByTypeDTO> dtoLista=new ArrayList<>();
-        for(String[] columna:filaLista){
-            UserBySumProductsByTypeDTO dto=new UserBySumProductsByTypeDTO();
-            dto.setUsername(columna[0]);
-            dto.setSumpProdType(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return  dtoLista;
-    }
-
     @GetMapping("/resumen_y_promedio_de_reseñas")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<Object[]> getUsersReviewSummary() {

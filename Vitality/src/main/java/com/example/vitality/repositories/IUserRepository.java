@@ -27,20 +27,7 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
     @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("user_id") int user_id);
 
-    //Diego
-    @Query(value = "SELECT U.username as USUARIO,SUM(SD.quantity_shopping_detail) AS  TOTAL_PRODUCTOS_COMPRADOS\n" +
-            "            FROM USERS U\n " +
-            "            INNER JOIN SHOPPING S\n " +
-            "            ON U.id = S.id_user\n " +
-            "            INNER JOIN SHOPPING_DETAIL SD\n " +
-            "            ON SD.num_order_shopping = S.id_shopping \n " +
-            "            INNER JOIN PRODUCT PR \n " +
-            "            ON PR.id_product = SD.id_product\n " +
-            "            INNER JOIN CATEGORY CA\n " +
-            "            ON CA.id_category = PR.category_id\n " +
-            "            WHERE CA.type_category = :Tipo \n " +
-            "            GROUP BY U.username ",nativeQuery = true)
-    public List<String[]> finUserSumProductsByType(@Param("Tipo") String Type);
+
 
     //Michel
     @Query(value = "select u.username, count(s.id_shopping) from users u \n " +

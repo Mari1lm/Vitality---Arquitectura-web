@@ -39,10 +39,6 @@ public class UserServiceImplement implements IUserService {
         return uR.findByWeight(peso);
     }
 
-    @Override
-    public List<String[]> finUserSumProductsByType(String Type) {
-        return uR.finUserSumProductsByType(Type);
-    }
 
     @Override
     public List<String[]> findCountShopping() {

@@ -67,9 +67,9 @@ public class CategoryController {
     }
 
     @GetMapping("/Totalproductoscompradosportipo")
-    public List<ProductsByCategoryDTO> sumaproductosportipo() {
+    public List<ProductsByCategoryDTO> sumaproductosportipo(@RequestParam String type) {
 
-        List<String[]> filaLista = cS.ProductsByCategory();
+        List<String[]> filaLista = cS.ProductsByCategory(type);
         List<ProductsByCategoryDTO> dtoLista=new ArrayList<>();
         for(String[] columna:filaLista){
             ProductsByCategoryDTO dto=new ProductsByCategoryDTO();

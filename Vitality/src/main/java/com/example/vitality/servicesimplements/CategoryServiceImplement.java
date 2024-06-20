@@ -41,7 +41,7 @@ public class CategoryServiceImplement implements ICategoryService {
     }
 
     @Override
-    public List<String[]> ProductsByCategory() {
-        return cR.ProductsByCategory();
+    public List<String[]> ProductsByCategory(String tipo) {
+        return cR.ProductsByCategory(tipo);
     }
 }

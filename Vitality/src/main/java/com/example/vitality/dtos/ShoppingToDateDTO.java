@@ -3,14 +3,14 @@ package com.example.vitality.dtos;
 import java.time.LocalDate;
 
 public class ShoppingToDateDTO {
-    private LocalDate dateShopping;
+    private String dateShopping;
     private int count;
 
-    public LocalDate getDateShopping() {
+    public String getDateShopping() {
         return dateShopping;
     }
 
-    public void setDateShopping(LocalDate dateShopping) {
+    public void setDateShopping(String dateShopping) {
         this.dateShopping = dateShopping;
     }
 

@@ -1,9 +1,6 @@
 package com.example.vitality.controllers;
 
-import com.example.vitality.dtos.AnswerDTO;
-import com.example.vitality.dtos.CategoryDTO;
-import com.example.vitality.dtos.ProductsByCategoryDTO;
-import com.example.vitality.dtos.UserDTO;
+import com.example.vitality.dtos.*;
 import com.example.vitality.entities.Category;
 import com.example.vitality.entities.Users;
 import com.example.vitality.servicesinterfaces.ICategoryService;
@@ -62,8 +59,16 @@ public class CategoryController {
 
     @GetMapping("/compras_totales")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public List<String> findTotalShoppingAmountToDate() {
-        return cS.findTotalShoppingAmountToDate();
+    public List<ShoppingToDateDTO> findTotalShoppingAmountToDate() {
+        List<String[]> filaLista =cS.findTotalShoppingAmountToDate();
+        List<ShoppingToDateDTO> dtoLista=new ArrayList<>();
+        for(String[] columna:filaLista){
+            ShoppingToDateDTO dto=new ShoppingToDateDTO();
+            dto.setDateShopping(columna[0]);
+            dto.setCount(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return  dtoLista;
     }
 
     @GetMapping("/Totalproductoscompradosportipo")

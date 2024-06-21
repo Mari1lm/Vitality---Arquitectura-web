@@ -18,7 +18,7 @@ public interface ICategoryRepository extends JpaRepository<Category,Integer> {
             "GROUP BY EXTRACT(YEAR FROM date_shopping) " +
             "ORDER BY year;",
             nativeQuery = true)
-    List<String> findTotalShoppingAmountToDate();
+    List<String[]> findTotalShoppingAmountToDate();
 
 
     //DIEGO (MODIFICADO DE USUARIO)

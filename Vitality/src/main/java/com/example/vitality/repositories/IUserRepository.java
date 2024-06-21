@@ -53,7 +53,7 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
             "            LEFT JOIN review r\n " +
             "            ON u.id = r.id_user\n " +
             "            GROUP BY u.username ", nativeQuery = true)
-    public List<Object[]> findUsersReviewSummary();
+    public List<String[]> findUsersReviewSummary();
 
     //ITALO
     @Query(value = "SELECT u.username, COUNT(h)\n " +

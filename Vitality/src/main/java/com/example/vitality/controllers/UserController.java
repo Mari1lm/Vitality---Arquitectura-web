@@ -71,20 +71,21 @@ public class UserController {
 
     }
 
-    @GetMapping("/resumen_y_promedio_de_reseñas")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public List<PunctuationByUserDTO> getUsersReviewSummary() {
-        List<Object[]> rawList = uS.findUsersReviewSummary();
-        List<PunctuationByUserDTO> dtoList = new ArrayList<>();
+        @GetMapping("/resumen_y_promedio_de_resenas")
+        @PreAuthorize("hasAuthority('ADMIN')")
+        public List<PunctuationByUserDTO> getUsersReviewSummary() {
+            List<String[]> rawList = uS.findUsersReviewSummary();
+            List<PunctuationByUserDTO> dtoList = new ArrayList<>();
+            for (String[] row : rawList) {
+                PunctuationByUserDTO dto = new PunctuationByUserDTO();
+                dto.setUsername(row[0]);
+                dto.setSumPunctuations(Integer.parseInt( row[1]));
+                dto.setAverageReview(Double.parseDouble(row[2]));
+                dtoList.add(dto);
+            }
 
-        for (Object[] row : rawList) {
-            PunctuationByUserDTO dto = new PunctuationByUserDTO();
-            dto.setUsername((String) row[0]);
-            dto.setSumPunctuations((Integer) row[1]);
-            dto.setAverageReview((Double) row[2]);
-            dtoList.add(dto);
+            return dtoList;
         }
-        return dtoList;
     }
 
     @GetMapping("/Cantidaddecompras")

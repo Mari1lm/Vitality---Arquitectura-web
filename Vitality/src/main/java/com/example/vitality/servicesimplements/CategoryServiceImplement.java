@@ -36,7 +36,7 @@ public class CategoryServiceImplement implements ICategoryService {
     }
 
     @Override
-    public List<String> findTotalShoppingAmountToDate() {
+    public List<String[]> findTotalShoppingAmountToDate() {
         return cR.findTotalShoppingAmountToDate();
     }
 

@@ -16,7 +16,7 @@ public interface ICategoryService {
 
     public Category listId(int id);
 
-    List<String> findTotalShoppingAmountToDate();
+    List<String[]> findTotalShoppingAmountToDate();
 
     public  List<String[]> ProductsByCategory(String type);
 

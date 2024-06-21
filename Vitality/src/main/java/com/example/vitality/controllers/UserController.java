@@ -71,23 +71,24 @@ public class UserController {
 
     }
 
-    @GetMapping("/resumen_y_promedio_de_reseñas")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public List<PunctuationByUserDTO> getUsersReviewSummary() {
-        List<Object[]> rawList = uS.findUsersReviewSummary();
-        List<PunctuationByUserDTO> dtoList = new ArrayList<>();
+        @GetMapping("/resumen_y_promedio_de_resenas")
+        @PreAuthorize("hasAuthority('ADMIN')")
+        public List<PunctuationByUserDTO> getUsersReviewSummary() {
+            List<String[]> rawList = uS.findUsersReviewSummary();
+            List<PunctuationByUserDTO> dtoList = new ArrayList<>();
+            for (String[] row : rawList) {
+                PunctuationByUserDTO dto = new PunctuationByUserDTO();
+                dto.setUsername(row[0]);
+                dto.setSumPunctuations(Integer.parseInt( row[1]));
+                dto.setAverageReview(Double.parseDouble(row[2]));
+                dtoList.add(dto);
+            }
 
-        for (Object[] row : rawList) {
-            PunctuationByUserDTO dto = new PunctuationByUserDTO();
-            dto.setUsername((String) row[0]);
-            dto.setSumPunctuations((Integer) row[1]);
-            dto.setAverageReview((Double) row[2]);
-            dtoList.add(dto);
+            return dtoList;
         }
-        return dtoList;
     }
 
-    @GetMapping("/Cantidaddecompras")
+    /*@GetMapping("/Cantidaddecompras")
     public List<CountShoppingDTO> cantidaddecompras() {
 
         List<String[]> filaLista = uS.findCountShopping();
@@ -99,10 +100,10 @@ public class UserController {
             dtoLista.add(dto);
         }
         return dtoLista;
-    }
+    }/*
 
 
-    @GetMapping("/ObjetivosCompletados")
+   /* @GetMapping("/ObjetivosCompletados")
     public List<StatusObjetiveDTO> objetivoscompletados() {
 
         List<String[]> filaLista = uS.findObjetiveStatus();
@@ -115,20 +116,5 @@ public class UserController {
             dtoLista.add(dto);
         }
         return dtoLista;
-    }
+    }}*/
 
-    @GetMapping("/Usuarios_suscritos")
-    public List<ObjectiveByUsersDTO> getHealthObjectivesForSubscribedUsers() {
-        List<String[]> filaLista = uS.countHealthObjectivesForSubscribedUsers();
-        List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();
-        for (String[] columna : filaLista) {
-            ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
-            dto.setUsername(columna[0]);
-            dto.setQuantity(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
-    }
-
-
-}

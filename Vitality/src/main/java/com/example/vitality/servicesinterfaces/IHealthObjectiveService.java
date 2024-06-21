@@ -10,4 +10,5 @@ public interface IHealthObjectiveService {
     public void delete(int id);
     public HealthObjective listId(int id);
     List<String[]> findHealthObjectivesByUser();
+    public List<String[]> countHealthObjectivesForSubscribedUsers();
 }

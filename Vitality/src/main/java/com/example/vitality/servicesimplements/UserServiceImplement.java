@@ -51,13 +51,8 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public List<Object[]> findUsersReviewSummary() {
+    public List<String[]> findUsersReviewSummary() {
         return uR.findUsersReviewSummary();
-    }
-
-    @Override
-    public List<String[]> countHealthObjectivesForSubscribedUsers() {
-        return uR.countHealthObjectivesForSubscribedUsers();
     }
 
 

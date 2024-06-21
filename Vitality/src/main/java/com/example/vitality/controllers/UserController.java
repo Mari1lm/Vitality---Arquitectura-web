@@ -117,18 +117,7 @@ public class UserController {
         return dtoLista;
     }
 
-    @GetMapping("/Usuarios_suscritos")
-    public List<ObjectiveByUsersDTO> getHealthObjectivesForSubscribedUsers() {
-        List<String[]> filaLista = uS.countHealthObjectivesForSubscribedUsers();
-        List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();
-        for (String[] columna : filaLista) {
-            ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
-            dto.setUsername(columna[0]);
-            dto.setQuantity(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
-    }
+
 
 
 }

@@ -34,6 +34,11 @@ public class HealthObjectiveServiceImplement implements IHealthObjectiveService 
         return hR.findById(id).orElse(new HealthObjective());
 
     }
+    @Override
+    public List<String[]> countHealthObjectivesForSubscribedUsers() {
+        return hR.countHealthObjectivesForSubscribedUsers();
+
+    }
 
     @Override
     public List<String[]> findHealthObjectivesByUser() {

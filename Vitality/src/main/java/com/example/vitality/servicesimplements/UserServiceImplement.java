@@ -50,10 +50,6 @@ public class UserServiceImplement implements IUserService {
         return uR.findObjetiveStatus();
     }
 
-    @Override
-    public List<String[]> findUsersReviewSummary() {
-        return uR.findUsersReviewSummary();
-    }
 
 
 }

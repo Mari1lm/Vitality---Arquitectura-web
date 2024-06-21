@@ -31,4 +31,15 @@ public interface IReviewRepository extends JpaRepository<Review,Integer> {
             "            u.id_udser=r.review_id \n" +
             "            group by u.username ",nativeQuery = true)
     List<String[]> totalPunctuations();
+
+
+
+    @Query(value = "SELECT u.username AS nombre_usuario,\n " +
+            "                        COUNT(r.id_review) AS total_revisiones,\n " +
+            "                        AVG(r.punctuation) AS promedio_puntuacion\n " +
+            "                        FROM review r \n " +
+            "                        INNER JOIN users u\n " +
+            "                        ON u.id = r.id_user\n " +
+            "                        GROUP BY u.username ", nativeQuery = true)
+    public List<String[]> findUsersReviewSummary();
 }

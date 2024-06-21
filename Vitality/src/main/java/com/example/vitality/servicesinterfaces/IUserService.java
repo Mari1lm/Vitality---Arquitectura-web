@@ -19,6 +19,6 @@ public interface IUserService {
 
     public List<String[]> findCountShopping();
     public List<String[]> findObjetiveStatus ();
-    public List<String[]> findUsersReviewSummary();
+
 
 }

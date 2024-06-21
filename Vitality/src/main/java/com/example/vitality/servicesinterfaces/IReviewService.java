@@ -18,4 +18,7 @@ public interface IReviewService {
 
     //reportfrank02
     List<String[]> totalPunctuations();
+
+
+    public List<String[]> findUsersReviewSummary();
 }

@@ -45,15 +45,7 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
             "            WHERE MO.status_monitoring = 'Finalizado'  ",nativeQuery = true)
     public List<String[]> findObjetiveStatus ();
 
-    //MARI
-    @Query(value = "SELECT u.username AS nombre_usuario,\n " +
-            "            COUNT(r.id_review) AS total_revisiones,\n " +
-            "            AVG(r.punctuation) AS promedio_puntuacion \n " +
-            "            FROM users u \n " +
-            "            LEFT JOIN review r\n " +
-            "            ON u.id = r.id_user\n " +
-            "            GROUP BY u.username ", nativeQuery = true)
-    public List<String[]> findUsersReviewSummary();
+
 
 
 }

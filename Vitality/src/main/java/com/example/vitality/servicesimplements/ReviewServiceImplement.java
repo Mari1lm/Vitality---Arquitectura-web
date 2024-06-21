@@ -49,4 +49,9 @@ public class ReviewServiceImplement implements IReviewService {
     public List<String[]> totalPunctuations() {
         return rR.totalPunctuations();
     }
+
+    @Override
+    public List<String[]> findUsersReviewSummary() {
+        return rR.findUsersReviewSummary();
+    }
 }

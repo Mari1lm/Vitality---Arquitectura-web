@@ -55,12 +55,5 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
             "            GROUP BY u.username ", nativeQuery = true)
     public List<String[]> findUsersReviewSummary();
 
-    //ITALO
-    @Query(value = "SELECT u.username, COUNT(h)\n " +
-            "            FROM Users u \n " +
-            "            JOIN health_objective h ON h.id_user=u.id\n " +
-            "            WHERE u.subscription = true \n " +
-            "            GROUP BY u.id, u.username ",
-            nativeQuery = true)
-    List<String[]> countHealthObjectivesForSubscribedUsers();
+
 }

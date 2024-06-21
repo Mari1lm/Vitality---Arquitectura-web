@@ -17,4 +17,13 @@ public interface IHealthObjectiveRepository extends JpaRepository<HealthObjectiv
             "            GROUP BY u.username ",
             nativeQuery = true)
     List<String[]> findHealthObjectivesByUser();
+
+
+    @Query(value = "SELECT u.username, COUNT(h.id_health_objective)\n " +
+            "                        FROM health_objective h \n " +
+            "                        INNER JOIN users u ON h.id_user=u.id\n " +
+            "                        WHERE u.subscription = true \n " +
+            "                        GROUP BY u.id, u.username  ",
+            nativeQuery = true)
+    List<String[]> countHealthObjectivesForSubscribedUsers();
 }

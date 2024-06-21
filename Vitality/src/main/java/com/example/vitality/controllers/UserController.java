@@ -88,7 +88,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/Cantidaddecompras")
+    /*@GetMapping("/Cantidaddecompras")
     public List<CountShoppingDTO> cantidaddecompras() {
 
         List<String[]> filaLista = uS.findCountShopping();
@@ -100,10 +100,10 @@ public class UserController {
             dtoLista.add(dto);
         }
         return dtoLista;
-    }
+    }/*
 
 
-    @GetMapping("/ObjetivosCompletados")
+   /* @GetMapping("/ObjetivosCompletados")
     public List<StatusObjetiveDTO> objetivoscompletados() {
 
         List<String[]> filaLista = uS.findObjetiveStatus();
@@ -116,20 +116,9 @@ public class UserController {
             dtoLista.add(dto);
         }
         return dtoLista;
-    }
+    }*/
 
-    @GetMapping("/Usuarios_suscritos")
-    public List<ObjectiveByUsersDTO> getHealthObjectivesForSubscribedUsers() {
-        List<String[]> filaLista = uS.countHealthObjectivesForSubscribedUsers();
-        List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();
-        for (String[] columna : filaLista) {
-            ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
-            dto.setUsername(columna[0]);
-            dto.setQuantity(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
-    }
+
 
 
 }

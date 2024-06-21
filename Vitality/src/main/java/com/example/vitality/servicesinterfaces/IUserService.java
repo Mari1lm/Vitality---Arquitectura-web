@@ -21,5 +21,4 @@ public interface IUserService {
     public List<String[]> findObjetiveStatus ();
     public List<String[]> findUsersReviewSummary();
 
-    List<String[]> countHealthObjectivesForSubscribedUsers();
 }

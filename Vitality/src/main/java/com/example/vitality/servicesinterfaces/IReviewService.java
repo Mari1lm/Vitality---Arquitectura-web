@@ -15,4 +15,7 @@ public interface IReviewService {
     public Review listId(int id);
     List<String[]> sumPunctuations();
     List<String[]> quantityReviewByUser();
+
+    //reportfrank02
+    List<String[]> totalPunctuations();
 }

@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface IReviewRepository extends JpaRepository<Review,Integer> {
-
     //Michel
     @Query(value ="select u.username as Usuarios, count(*) as Reviews \n" +
             "            from Users u inner join Review r \n" +
@@ -24,4 +23,12 @@ public interface IReviewRepository extends JpaRepository<Review,Integer> {
             "            Review r on u.id = r.id_user\n " +
             "            group by u.username ",nativeQuery = true)
     List<String[]> sumPunctuations();
+
+    // report2frank
+
+    @Query(value ="select u.username as Usuario , sum(r.punctuation) as Suma \n" +
+            "            from User u inner join Review r on \n" +
+            "            u.id_udser=r.review_id \n" +
+            "            group by u.username ",nativeQuery = true)
+    List<String[]> totalPunctuations();
 }

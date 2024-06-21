@@ -43,4 +43,10 @@ public class ReviewServiceImplement implements IReviewService {
     public List<String[]> quantityReviewByUser() {
         return rR.quantityReviewByUser();
     }
+
+    //frankreport2
+    @Override
+    public List<String[]> totalPunctuations() {
+        return rR.totalPunctuations();
+    }
 }

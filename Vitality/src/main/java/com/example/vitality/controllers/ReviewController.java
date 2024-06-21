@@ -5,6 +5,7 @@ import com.example.vitality.dtos.PunctuationByUserDTO;
 import com.example.vitality.dtos.ReviewByUserDTO;
 import com.example.vitality.dtos.ReviewDTO;
 
+import com.example.vitality.dtos.TotalPunctuationDTO;
 import com.example.vitality.entities.Review;
 import com.example.vitality.servicesinterfaces.IReviewService;
 import org.modelmapper.ModelMapper;
@@ -64,6 +65,7 @@ public class ReviewController {
     }
 
     @GetMapping("/sumas")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<PunctuationByUserDTO> sumaPuntuaciones(){
         List<String[]> filaLista = rS.sumPunctuations();
         List<PunctuationByUserDTO> dtoLista=new ArrayList<>();
@@ -77,6 +79,7 @@ public class ReviewController {
     }
 
     @GetMapping("/cantidades")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ReviewByUserDTO> cantidadReseniasUsuario(){
         List<String[]> filaLista = rS.quantityReviewByUser();
         List<ReviewByUserDTO> dtoLista=new ArrayList<>();
@@ -84,6 +87,21 @@ public class ReviewController {
             ReviewByUserDTO dto=new ReviewByUserDTO();
             dto.setUsername(columna[0]);
             dto.setQuantityReview(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    //reportfrank02
+    @GetMapping("/totales")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<TotalPunctuationDTO> totalPuntuaciones(){
+        List<String[]> filaLista = rS.totalPunctuations();
+        List<TotalPunctuationDTO> dtoLista=new ArrayList<>();
+        for (String[] columna:filaLista){
+            TotalPunctuationDTO dto=new TotalPunctuationDTO();
+            dto.setUsername(columna[0]);
+            dto.setTotalPunctuations(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

@@ -47,8 +47,8 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable("id") int id){
+    @DeleteMapping("/{idRole}")
+    public void eliminar(@PathVariable("idRole") int id){
         uS.delete(id);
     }
 

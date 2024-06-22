@@ -19,7 +19,7 @@ public class AnswerController {
     @Autowired
     private IAnswerService aS;
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar(@RequestBody AnswerDTO answerDTO){
         ModelMapper d= new ModelMapper();
         Answer answer=d.map(answerDTO,Answer.class);

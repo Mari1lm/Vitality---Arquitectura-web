@@ -73,33 +73,8 @@ public class UserController {
 
     }
 
-    /*@GetMapping("/Cantidaddecompras")
-    public List<CountShoppingDTO> cantidaddecompras() {
-
-        List<String[]> filaLista = uS.findCountShopping();
-        List<CountShoppingDTO> dtoLista = new ArrayList<>();
-        for (String[] columna : filaLista) {
-            CountShoppingDTO dto = new CountShoppingDTO();
-            dto.setDateShopping(LocalDate.parse((String) columna[0]));
-            dto.setCount(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
-    }/*
 
 
-   /* @GetMapping("/ObjetivosCompletados")
-    public List<StatusObjetiveDTO> objetivoscompletados() {
 
-        List<String[]> filaLista = uS.findObjetiveStatus();
-        List<StatusObjetiveDTO> dtoLista = new ArrayList<>();
-        for (String[] columna : filaLista) {
-            StatusObjetiveDTO dto = new StatusObjetiveDTO();
-            dto.setUsername(columna[0]);
-            dto.setTypeObjetive(columna[1]);
-            dto.setStatus(columna[2]);
-            dtoLista.add(dto);
-        }
-        return dtoLista;
-    }}*/
+
 

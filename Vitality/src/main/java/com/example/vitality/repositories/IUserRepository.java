@@ -29,23 +29,5 @@ public interface IUserRepository extends JpaRepository<Users,Integer> {
 
 
 
-    //Michel
-    @Query(value = "select u.username, count(s.id_shopping) from users u \n " +
-            "            inner join shopping s on s.id_user = u.id\n " +
-            "            group by u.username ", nativeQuery = true)
-    public List<String[]> findCountShopping ();
-
-    // frank?
-    @Query(value = "SELECT U.username, HO.type_objective, MO.status_monitoring\n " +
-            "            FROM USERS U\n " +
-            "            INNER JOIN health_objective HO\n " +
-            "            ON HO.id_user = U.id\n " +
-            "            INNER JOIN monitoring MO\n " +
-            "            ON HO.id_health_objective = MO.id_health_objective\n " +
-            "            WHERE MO.status_monitoring = 'Finalizado'  ",nativeQuery = true)
-    public List<String[]> findObjetiveStatus ();
-
-
-
 
 }

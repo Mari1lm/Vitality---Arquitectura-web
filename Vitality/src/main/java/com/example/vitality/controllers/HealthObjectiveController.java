@@ -3,6 +3,7 @@ package com.example.vitality.controllers;
 import com.example.vitality.dtos.AnswerDTO;
 import com.example.vitality.dtos.HealthObjectiveDTO;
 import com.example.vitality.dtos.ObjectiveByUsersDTO;
+import com.example.vitality.dtos.StatusObjetiveDTO;
 import com.example.vitality.entities.Answer;
 import com.example.vitality.entities.HealthObjective;
 import com.example.vitality.servicesinterfaces.IHealthObjectiveService;
@@ -76,6 +77,21 @@ public class HealthObjectiveController {
             ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
             dto.setUsername(columna[0]);
             dto.setQuantity(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/ObjetivosCompletados")
+    public List<StatusObjetiveDTO> objetivoscompletados() {
+
+        List<String[]> filaLista = hS.findObjetiveStatus();
+        List<StatusObjetiveDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            StatusObjetiveDTO dto = new StatusObjetiveDTO();
+            dto.setUsername(columna[0]);
+            dto.setTypeObjetive(columna[1]);
+            dto.setStatus(columna[2]);
             dtoLista.add(dto);
         }
         return dtoLista;

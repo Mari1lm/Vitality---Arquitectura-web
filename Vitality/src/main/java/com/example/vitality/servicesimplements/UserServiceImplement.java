@@ -40,15 +40,6 @@ public class UserServiceImplement implements IUserService {
     }
 
 
-    @Override
-    public List<String[]> findCountShopping() {
-        return uR.findCountShopping();
-    }
-
-    @Override
-    public List<String[]> findObjetiveStatus() {
-        return uR.findObjetiveStatus();
-    }
 
 
 

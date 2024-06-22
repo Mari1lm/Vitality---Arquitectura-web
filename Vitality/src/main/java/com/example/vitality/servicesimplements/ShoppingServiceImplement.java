@@ -33,4 +33,9 @@ public class ShoppingServiceImplement implements IShoppingService {
         return sR.findById(id).orElse(new Shopping());
     }
 
+    @Override
+    public List<String[]> findCountShopping() {
+        return sR.findCountShopping();
+    }
+
 }

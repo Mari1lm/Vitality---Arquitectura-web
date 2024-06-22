@@ -19,6 +19,7 @@ public interface IHealthObjectiveRepository extends JpaRepository<HealthObjectiv
     List<String[]> findHealthObjectivesByUser();
 
 
+    //ITALO
     @Query(value = "SELECT u.username, COUNT(h.id_health_objective)\n " +
             "                        FROM health_objective h \n " +
             "                        INNER JOIN users u ON h.id_user=u.id\n " +
@@ -26,4 +27,16 @@ public interface IHealthObjectiveRepository extends JpaRepository<HealthObjectiv
             "                        GROUP BY u.id, u.username  ",
             nativeQuery = true)
     List<String[]> countHealthObjectivesForSubscribedUsers();
+
+
+    //MICHEL
+    @Query(value = "SELECT U.username, HO.type_objective, MO.status_monitoring\n " +
+            "                        FROM health_objective HO\n " +
+            "                        INNER JOIN users U\n " +
+            "                        ON U.id = HO.id_user\n " +
+            "                        INNER JOIN monitoring MO\n " +
+            "                        ON MO.id_health_objective = HO.id_health_objective\n " +
+            "                        WHERE MO.status_monitoring = 'Finalizado'  ",nativeQuery = true)
+    public List<String[]> findObjetiveStatus ();
+
 }

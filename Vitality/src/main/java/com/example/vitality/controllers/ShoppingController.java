@@ -1,6 +1,8 @@
 package com.example.vitality.controllers;
 
+import com.example.vitality.dtos.CountShoppingDTO;
 import com.example.vitality.dtos.ShoppingDTO;
+import com.example.vitality.dtos.StatusObjetiveDTO;
 import com.example.vitality.entities.Shopping;
 import com.example.vitality.servicesinterfaces.IShoppingService;
 import org.modelmapper.ModelMapper;
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,4 +58,20 @@ public class ShoppingController {
         return dto;
 
     }
+
+    @GetMapping("/Cantidaddecompras")
+    public List<CountShoppingDTO> cantidaddecompras() {
+
+        List<String[]> filaLista = sS.findCountShopping();
+        List<CountShoppingDTO> dtoLista = new ArrayList<>();
+        for (String[] columna : filaLista) {
+            CountShoppingDTO dto = new CountShoppingDTO();
+            dto.setUsername(columna[0]);
+            dto.setCount(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+
 }

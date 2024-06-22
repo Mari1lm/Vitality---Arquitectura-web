@@ -3,15 +3,15 @@ package com.example.vitality.dtos;
 import java.time.LocalDate;
 
 public class CountShoppingDTO {
-    private LocalDate dateShopping;
+    private String username;
     private int count;
 
-    public LocalDate getDateShopping() {
-        return dateShopping;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDateShopping(LocalDate dateShopping) {
-        this.dateShopping = dateShopping;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getCount() {

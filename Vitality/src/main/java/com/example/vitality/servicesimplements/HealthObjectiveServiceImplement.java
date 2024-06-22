@@ -41,6 +41,11 @@ public class HealthObjectiveServiceImplement implements IHealthObjectiveService 
     }
 
     @Override
+    public List<String[]> findObjetiveStatus() {
+        return hR.findObjetiveStatus();
+    }
+
+    @Override
     public List<String[]> findHealthObjectivesByUser() {
         return hR.findHealthObjectivesByUser();
     }

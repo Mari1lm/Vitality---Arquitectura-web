@@ -11,4 +11,6 @@ public interface IShoppingService {
    public void delete(int id);
 
    public Shopping listId(int id);
+
+   public List<String[]> findCountShopping ();
 }

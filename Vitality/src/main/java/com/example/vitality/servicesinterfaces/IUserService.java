@@ -17,8 +17,6 @@ public interface IUserService {
 
     public List<Users> findByWeight (Float peso);
 
-    public List<String[]> findCountShopping();
-    public List<String[]> findObjetiveStatus ();
 
 
 }

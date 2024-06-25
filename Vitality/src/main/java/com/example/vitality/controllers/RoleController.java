@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/roles")
 public class RoleController {
     @Autowired
-    private IRoleService cS;
+    private IRoleService rS;
 
 
     @PostMapping
@@ -22,7 +22,7 @@ public class RoleController {
     public void insertar(@RequestBody RoleDTO roleDTO){
         ModelMapper d= new ModelMapper();
         Role role=d.map(roleDTO, Role.class);
-        cS.insert(role);
+        rS.insert(role);
     }
 
 
@@ -30,14 +30,14 @@ public class RoleController {
     public void modificar(@RequestBody RoleDTO roleDTO){
         ModelMapper d= new ModelMapper();
         Role role=d.map(roleDTO, Role.class);
-        cS.insert(role);
+        rS.insert(role);
     }
 
 
 
     @GetMapping
     public List<RoleDTO> listar(){
-        return cS.list().stream().map(y->{
+        return rS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
             return m.map(y,RoleDTO.class);
         }).collect(Collectors.toList());
@@ -45,14 +45,14 @@ public class RoleController {
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
-        cS.delete(id);
+        rS.delete(id);
     }
 
     @GetMapping("/{id}")
     public RoleDTO listarId(@PathVariable("id") int id){
 
         ModelMapper m= new ModelMapper();
-        RoleDTO dto=m.map(cS.listId(id),RoleDTO.class);
+        RoleDTO dto=m.map(rS.listId(id),RoleDTO.class);
         return dto;
 
     }

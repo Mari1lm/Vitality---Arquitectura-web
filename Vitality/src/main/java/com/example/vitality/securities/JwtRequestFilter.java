@@ -16,14 +16,26 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 
 //Clase 6
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
+    private static final List<String> PUBLIC_PATHS = List.of(
+            "/login", "/", "/swagger-ui", "/v3/api-docs"
+    );
+
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return PUBLIC_PATHS.stream().anyMatch(p -> path.equals(p) || path.startsWith(p + "/"));
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -42,9 +54,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             } catch (ExpiredJwtException e) {
                 System.out.println("Token JWT ha expirado");
             }
-        } else {
-            logger.warn("JWT Token no inicia con la palabra Bearer");
-            System.out.println(requestTokenHeader);
         }
 
 

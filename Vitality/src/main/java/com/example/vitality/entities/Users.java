@@ -31,9 +31,9 @@ public class Users implements Serializable {
     private Float weight;
     @Column(name = "height",nullable = false)
     private int height;
-    @Column(name = "subscription",nullable = false,length = 10)
+    @Column(name = "subscription", nullable = false)
     private boolean subscription;
-    @Column(name = "healthProfessional",nullable = false,length = 10)
+    @Column(name = "health_professional", nullable = false)
     private boolean healthProfessional;
 
     public Users() {

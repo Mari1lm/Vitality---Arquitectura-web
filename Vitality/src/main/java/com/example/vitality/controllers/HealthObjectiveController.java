@@ -83,15 +83,13 @@ public class HealthObjectiveController {
     }
 
     @GetMapping("/ObjetivosCompletados")
-    public List<StatusObjetiveDTO> objetivoscompletados() {
-
+    public List<ObjectiveByUsersDTO> objetivoscompletados() {
         List<String[]> filaLista = hS.findObjetiveStatus();
-        List<StatusObjetiveDTO> dtoLista = new ArrayList<>();
+        List<ObjectiveByUsersDTO> dtoLista = new ArrayList<>();
         for (String[] columna : filaLista) {
-            StatusObjetiveDTO dto = new StatusObjetiveDTO();
+            ObjectiveByUsersDTO dto = new ObjectiveByUsersDTO();
             dto.setUsername(columna[0]);
-            dto.setTypeObjetive(columna[1]);
-            dto.setStatus(columna[2]);
+            dto.setQuantity(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

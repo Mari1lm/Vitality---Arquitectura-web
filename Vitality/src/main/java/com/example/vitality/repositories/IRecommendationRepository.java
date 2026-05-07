@@ -11,7 +11,10 @@ import java.util.List;
 public interface IRecommendationRepository extends JpaRepository<Recommendation,Integer> {
 
     //Diego
-    @Query(value = "SELECT U.username AS NOMBRE_USUARIO, COUNT(*) as Cant_Recomendaciones FROM RECOMMENDATION R \n " +
-            "            INNER JOIN USERS U ON U.id = R.user_id GROUP BY U.id  ",nativeQuery = true)
+    @Query(value = "SELECT u.username AS nombre_usuario, COUNT(*) AS cant_recomendaciones " +
+            "FROM recommendation r " +
+            "INNER JOIN users u ON u.id = r.userid " +
+            "GROUP BY u.username " +
+            "ORDER BY cant_recomendaciones DESC", nativeQuery = true)
     public List<String[]> quantityRecommendationByMovie();
 }

@@ -101,17 +101,16 @@ public class ReviewController {
 
     @GetMapping("/resumen_y_promedio_de_resenas")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public List<PunctuationByUserDTO> getUsersReviewSummary() {
+    public List<ReviewByUserDTO> getUsersReviewSummary() {
         List<String[]> rawList = rS.findUsersReviewSummary();
-        List<PunctuationByUserDTO> dtoList = new ArrayList<>();
+        List<ReviewByUserDTO> dtoList = new ArrayList<>();
         for (String[] row : rawList) {
-            PunctuationByUserDTO dto = new PunctuationByUserDTO();
+            ReviewByUserDTO dto = new ReviewByUserDTO();
             dto.setUsername(row[0]);
-            dto.setSumPunctuations(Integer.parseInt( row[1]));
-            dto.setAverageReview(Double.parseDouble(row[2]));
+            dto.setQuantityReview(Integer.parseInt(row[1]));
             dtoList.add(dto);
         }
-
         return dtoList;
+    }
     }
 }

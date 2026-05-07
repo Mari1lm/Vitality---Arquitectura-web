@@ -10,6 +10,7 @@ import java.util.List;
 public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private int id;
     @Column(length = 30, unique = true)
     private String username;
@@ -21,7 +22,7 @@ public class Users implements Serializable {
     private Boolean enabled;
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
     private List<Role> roles;
 
     @Column(name = "address",nullable = false,length = 100)

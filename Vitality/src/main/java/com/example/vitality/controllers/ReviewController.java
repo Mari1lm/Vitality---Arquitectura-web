@@ -63,19 +63,11 @@ public class ReviewController {
         return dto;
 
     }
-
+    //frank1
     @GetMapping("/sumas")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public List<PunctuationByUserDTO> sumaPuntuaciones(){
-        List<String[]> filaLista = rS.sumPunctuations();
-        List<PunctuationByUserDTO> dtoLista=new ArrayList<>();
-        for (String[] columna:filaLista){
-            PunctuationByUserDTO dto=new PunctuationByUserDTO();
-            dto.setUsername(columna[0]);
-            dto.setSumPunctuations(Integer.parseInt(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
+    public Integer sumaPuntuaciones(){
+        return rS.sumPunctuations();
     }
 
     @GetMapping("/cantidades")

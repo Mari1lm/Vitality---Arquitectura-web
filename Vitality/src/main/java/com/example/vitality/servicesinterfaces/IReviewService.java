@@ -13,7 +13,7 @@ public interface IReviewService {
     public void delete(int id);
 
     public Review listId(int id);
-    List<String[]> sumPunctuations();
+    Integer sumPunctuations();
     List<String[]> quantityReviewByUser();
 
     //reportfrank02

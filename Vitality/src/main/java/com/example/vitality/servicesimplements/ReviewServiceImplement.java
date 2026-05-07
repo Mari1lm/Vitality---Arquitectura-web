@@ -35,7 +35,7 @@ public class ReviewServiceImplement implements IReviewService {
     }
 
     @Override
-    public List<String[]> sumPunctuations() {
+    public Integer sumPunctuations() {
         return rR.sumPunctuations();
     }
 

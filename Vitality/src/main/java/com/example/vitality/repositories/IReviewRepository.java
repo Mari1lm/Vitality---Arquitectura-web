@@ -18,11 +18,8 @@ public interface IReviewRepository extends JpaRepository<Review,Integer> {
     List<String[]> quantityReviewByUser();
 
     // frank?
-
-    @Query(value ="Select u.username,SUM(r.punctuation) FROM Users u inner join \n " +
-            "            Review r on u.id = r.id_user\n " +
-            "            group by u.username ",nativeQuery = true)
-    List<String[]> sumPunctuations();
+    @Query(value = "SELECT SUM(r.punctuation) FROM Review r", nativeQuery = true)
+    Integer sumPunctuations();
 
     // report2frank
     @Query(value ="select u.username as Usuario , sum(r.punctuation) as Suma \n" +

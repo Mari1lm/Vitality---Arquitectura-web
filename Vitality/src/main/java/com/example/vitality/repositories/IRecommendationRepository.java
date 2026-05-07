@@ -13,7 +13,7 @@ public interface IRecommendationRepository extends JpaRepository<Recommendation,
     //Diego
     @Query(value = "SELECT u.username AS nombre_usuario, COUNT(*) AS cant_recomendaciones " +
             "FROM recommendation r " +
-            "INNER JOIN users u ON u.id = r.userid " +
+            "INNER JOIN users u ON u.id = r.user_id " +
             "GROUP BY u.username " +
             "ORDER BY cant_recomendaciones DESC", nativeQuery = true)
     public List<String[]> quantityRecommendationByMovie();
